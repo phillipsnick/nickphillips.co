@@ -1,0 +1,27 @@
+*~
+*#
+.#*
+\#*#
+.*.sw[a-z]
+*.un~
+pkg/
+
+# IDE
+.idea
+
+# PHP
+composer.phar
+
+# Berkshelf
+.vagrant
+/cookbooks
+Berksfile.lock
+
+# Bundler
+Gemfile.lock
+bin/*
+.bundle/*
+
+# Chef
+.kitchen/
+.kitchen.local.yml

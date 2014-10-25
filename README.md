@@ -1,4 +1,9 @@
-nickphillips.co
-===============
+# nickphillips.co
 
-Website for nickphillips.co
+Website source for nickphillips.co
+
+
+## Development setup
+
+Vagrant
+
