@@ -10,7 +10,7 @@ pkg/
 .idea
 
 # PHP
-composer.phar
+/composer.phar
 
 # Berkshelf
 .vagrant
@@ -25,3 +25,15 @@ bin/*
 # Chef
 .kitchen/
 .kitchen.local.yml
+
+# Symfony2
+/web/bundles/
+/app/bootstrap.php.cache
+/app/cache/*
+/app/config/parameters.yml
+/app/logs/*
+!app/cache/.gitkeep
+!app/logs/.gitkeep
+/build/
+/vendor/
+/bin/
