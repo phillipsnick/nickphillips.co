@@ -6,6 +6,8 @@ description      'e'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          '0.1.0'
 
+supports "ubuntu", "~> 14.04.0"
+
 depends 'apt', '~> 2.6.0'
 depends 'curl', '~> 2.0.0'
 depends 'apache2', '~> 2.0.0'

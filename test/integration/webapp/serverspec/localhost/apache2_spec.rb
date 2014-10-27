@@ -2,17 +2,27 @@
 
 require 'spec_helper'
 
-describe 'apache2' do
-  it 'should be installed' do
-    expect(package('apache2')).to be_installed
+describe 'apache2 webserver' do
+  describe package('apache2') do
+    it { should be_installed }
+    it { should be_version('2.4.7-1ubuntu4.1') }#node['apache']['version']
   end
 
-  it 'should be enabled and running' do
-    expect(service 'apache2').to be_enabled
-    expect(service 'apache2').to be_running
+  describe service('apache2') do
+    it { should be_enabled }
+    it { should be_running }
   end
 
-  it 'should be listening on port 80' do
-    expect(port 80).to be_listening
+  describe port(80) do
+    it { should be_listening }
+  end
+
+  describe command('apache2ctl -M') do
+    its(:stdout) { should match /.*php5_module.*/ }
+    its(:stdout) { should match /.*rewrite_module.*/ }
+  end
+
+  describe file("/etc/apache2/sites-enabled/#{$node['apache']['config_name']}.conf") do
+    it { should be_file }
   end
 end

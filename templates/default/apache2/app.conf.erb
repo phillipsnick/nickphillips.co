@@ -1,23 +1,22 @@
 # Managed by Chef for <%= node['hostname'] %>
-<VirtualHost *:80>
-        ServerAdmin nick@linkstudios.co.uk
+<VirtualHost *:<%= node['apache']['listen_ports'].first %>>
+    ServerAdmin <%= node['apache']['contact'] %>
 
-        DocumentRoot /var/www
-        <Directory />
-                Options FollowSymLinks
-                AllowOverride None
-        </Directory>
-        <Directory /var/www>
-                Options Indexes FollowSymLinks MultiViews
-                AllowOverride None
-                Order allow,deny
-                allow from all
-        </Directory>
+    DocumentRoot /var/www
+    <Directory />
+        Options FollowSymLinks
+        AllowOverride None
+    </Directory>
+    <Directory /var/www>
+        Options Indexes FollowSymLinks MultiViews
+        AllowOverride None
+        Require all granted
+    </Directory>
 
-        ErrorLog <%= node['apache']['log_dir'] %>/error.log
+    ErrorLog <%= node['apache']['log_dir'] %>/error.log
 
-        LogLevel warn
+    LogLevel warn
 
-        CustomLog <%= node['apache']['log_dir'] %>/access.log combined
-        ServerSignature Off
+    CustomLog <%= node['apache']['log_dir'] %>/access.log combined
+    ServerSignature Off
 </VirtualHost>
