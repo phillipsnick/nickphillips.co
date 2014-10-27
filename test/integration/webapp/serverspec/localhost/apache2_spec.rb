@@ -5,7 +5,7 @@ require 'spec_helper'
 describe 'apache2 webserver' do
   describe package('apache2') do
     it { should be_installed }
-    it { should be_version('2.4.7-1ubuntu4.1') }#node['apache']['version']
+    #it { should be_version('2.4.7-1ubuntu4.1') } # See issue #1
   end
 
   describe service('apache2') do

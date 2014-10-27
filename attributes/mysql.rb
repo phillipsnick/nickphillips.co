@@ -1,8 +1,6 @@
-default['root']['host'] = 'localhost'
-default['root']['username'] = 'root'
-default['root']['password'] = 'root'
+default['mysql']['server_root_password'] = 'root'
 
-#mysql['app']['host'] = 'localhost'
-#mysql['app']['username'] = 'app'
-#mysql['app']['password'] = 'app'
-#mysql['app']['dbname'] = 'app'
+default['mysql']['app']['host'] = 'localhost'
+default['mysql']['app']['username'] = 'app'
+default['mysql']['app']['password'] = 'app'
+default['mysql']['app']['dbname'] = 'app'
