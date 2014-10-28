@@ -2,12 +2,12 @@
 <VirtualHost *:<%= node['apache']['listen_ports'].first %>>
     ServerAdmin <%= node['apache']['contact'] %>
 
-    DocumentRoot /var/www
+    DocumentRoot /vagrant/web
     <Directory />
         Options FollowSymLinks
         AllowOverride None
     </Directory>
-    <Directory /var/www>
+    <Directory /vagrant/web>
         Options Indexes FollowSymLinks MultiViews
         AllowOverride None
         Require all granted
