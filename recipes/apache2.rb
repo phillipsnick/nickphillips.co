@@ -9,10 +9,13 @@ include_recipe 'apache2::mod_php5'
 #  package_name node['apache']['package']
 #end
 
-# Setup vhosts
-#apache_site "000-default" do
-#  enable false
-#end
+package "php5-mysql" do
+  action :install
+end
+
+package "php5-memcached" do
+  action :install
+end
 
 template "#{node['apache']['dir']}/sites-available/#{node['apache']['config_name']}.conf" do
   source 'apache2/app.conf.erb'
