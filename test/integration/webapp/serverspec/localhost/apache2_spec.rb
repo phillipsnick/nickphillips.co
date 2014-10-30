@@ -30,5 +30,7 @@ describe 'apache2 webserver' do
     its(:stdout) { should match /memcached/ }
     its(:stdout) { should match /mysql/ }
     its(:stdout) { should match /pdo_mysql/ }
+    its(:stdout) { should match /Xdebug/ }
+    its(:stdout) { should match /mcrypt/ }
   end
 end
