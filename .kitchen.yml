@@ -26,6 +26,7 @@ suites:
       - recipe[test-helper::default]
       - recipe[app::apt]
       - recipe[curl]
+      - recipe[app::php-fpm]
       - recipe[app::apache2]
       - recipe[app::mysql]
       - recipe[memcached]

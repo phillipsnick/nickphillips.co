@@ -1,5 +1,3 @@
-# Ideas taken from https://github.com/viverae-cookbooks/apache2/blob/master/test/integration/default/serverspec/localhost/default_spec.rb
-
 require 'spec_helper'
 
 describe 'apache2 webserver' do
@@ -18,19 +16,14 @@ describe 'apache2 webserver' do
   end
 
   describe command('apache2ctl -M') do
-    its(:stdout) { should match /php5_module/ }
+    its(:stdout) { should match /proxy_module/ }
+    its(:stdout) { should match /proxy_fcgi_module/ }
+    its(:stdout) { should match /actions_module/ }
     its(:stdout) { should match /rewrite_module/ }
+    its(:stdout) { should match /fastcgi_module/ }
   end
 
   describe file("/etc/apache2/sites-enabled/#{$node['apache']['config_name']}.conf") do
     it { should be_file }
-  end
-
-  describe command('php -m') do
-    its(:stdout) { should match /memcached/ }
-    its(:stdout) { should match /mysql/ }
-    its(:stdout) { should match /pdo_mysql/ }
-    its(:stdout) { should match /Xdebug/ }
-    its(:stdout) { should match /mcrypt/ }
   end
 end

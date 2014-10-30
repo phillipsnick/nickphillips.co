@@ -2,6 +2,8 @@
 <VirtualHost *:<%= node['apache']['listen_ports'].first %>>
     ServerAdmin <%= node['apache']['contact'] %>
 
+    ProxyPassMatch ^/(.*\.php(/.*)?)$ fcgi://127.0.0.1:9000/vagrant/web/$1
+
     DocumentRoot /vagrant/web
     DirectoryIndex app_dev.php
 
@@ -11,7 +13,7 @@
     </Directory>
     <Directory /vagrant/web>
         Options Indexes FollowSymLinks MultiViews
-        AllowOverride None
+        AllowOverride All
         Require all granted
     </Directory>
 

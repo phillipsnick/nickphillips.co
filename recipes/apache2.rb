@@ -1,29 +1,17 @@
 include_recipe 'apache2'
-include_recipe 'apache2::mod_php5'
 
-#package 'apache2' do
-#  version node['apache']['version']
-#  action :install
-#end
-#package 'apache2' do
-#  package_name node['apache']['package']
-#end
+package 'apache2-mpm-worker'
+package 'libapache2-mod-fastcgi'
 
-package "php5-mysql" do
-  action :install
+template "#{node['apache']['dir']}/mods-available/fastcgi.conf" do
+  source "apache2/fastcgi.conf.erb"
+  notifies :reload, 'service[apache2]', :delayed
 end
 
-package "php5-mcrypt" do
-  action :install
-end
-
-package "php5-memcached" do
-  action :install
-end
-
-package "php5-xdebug" do
-  action :install
-end
+apache_module 'proxy'
+apache_module 'proxy_fcgi'
+apache_module 'actions'
+apache_module 'fastcgi'
 
 template "#{node['apache']['dir']}/sites-available/#{node['apache']['config_name']}.conf" do
   source 'apache2/app.conf.erb'

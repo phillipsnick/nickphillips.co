@@ -10,6 +10,7 @@ supports "ubuntu", "~> 14.04.0"
 
 depends 'apt', '~> 2.6.0'
 depends 'curl', '~> 2.0.0'
+depends 'php-fpm', '~> 0.7.0'
 depends 'apache2', '~> 2.0.0'
 depends 'mysql', '~> 5.5.4'
 depends 'database', '~> 2.3.0'
