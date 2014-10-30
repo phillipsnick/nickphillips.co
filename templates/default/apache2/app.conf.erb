@@ -3,6 +3,8 @@
     ServerAdmin <%= node['apache']['contact'] %>
 
     DocumentRoot /vagrant/web
+    DirectoryIndex app_dev.php
+
     <Directory />
         Options FollowSymLinks
         AllowOverride None
