@@ -29,6 +29,4 @@ suites:
       - recipe[app::apache2]
       - recipe[app::mysql]
       - recipe[memcached]
-    attributes:
-      mysql:
-        server_root_password: "root"
+      - recipe[app::mailcatcher]

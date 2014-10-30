@@ -13,7 +13,23 @@ __STATUS:__ huge work in progress currently ;)
 
 notes: Vagrant, virtual box?
 
+## Bookmarks
+
+### The project
+
+(http://192.168.100.10)
+
+### MailCatcher
+
+(http://192.168.100.10:1080)
+
+notes: add details?
+
 ## Tests
+
+## Versioning
+
+Aim to adhere to [Semantic Versioning 2.0.0](http://semver.org/).
 
 ## Licence
 
