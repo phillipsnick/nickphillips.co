@@ -32,3 +32,4 @@ suites:
       - recipe[app::mysql]
       - recipe[memcached]
       - recipe[app::mailcatcher]
+      - recipe[composer]
