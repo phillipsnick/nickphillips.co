@@ -6,6 +6,10 @@ describe 'apache2 webserver' do
     #it { should be_version('2.4.7-1ubuntu4.1') } # See issue #1
   end
 
+  describe command('apache2 -v') do
+    its(:stdout) { should match /Server version: Apache\/2.4./ }
+  end
+
   describe service('apache2') do
     it { should be_enabled }
     it { should be_running }

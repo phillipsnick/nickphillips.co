@@ -17,10 +17,10 @@
         Require all granted
     </Directory>
 
-    ErrorLog <%= node['apache']['log_dir'] %>/error.log
+    ErrorLog <%= node['apache']['log_dir'] %>/error-site.log
 
     LogLevel warn
 
-    CustomLog <%= node['apache']['log_dir'] %>/access.log combined
+    CustomLog <%= node['apache']['log_dir'] %>/access-site.log combined
     ServerSignature Off
 </VirtualHost>
