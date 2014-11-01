@@ -1,4 +1,4 @@
-include_recipe 'mailcatcher'
+include_recipe 'MailCatcher'
 #include_recipe 'app::apache2'
 
 # Unable to get the mailcatcher::php recipe to work, so have created my own.
