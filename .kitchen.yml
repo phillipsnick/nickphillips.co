@@ -27,7 +27,7 @@ suites:
       - recipe[app::apt]
       - recipe[curl]
       - recipe[git]
-      - recipe[app::php-fpm]
+      - recipe[app::php]
       - recipe[app::apache2]
       - recipe[app::mysql]
       - recipe[memcached]

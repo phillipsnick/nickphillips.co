@@ -1,3 +1,4 @@
+include_recipe 'php'
 include_recipe 'php-fpm'
 
 php_fpm_pool "www" do
