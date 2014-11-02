@@ -23,6 +23,10 @@ notes: Vagrant, virtual box?
 
 (http://192.168.100.10:1080)
 
+### phpMyAdmin
+
+http://192.168.100.10:1090
+
 notes: add details?
 
 ## Tests
