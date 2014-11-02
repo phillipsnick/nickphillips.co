@@ -36,3 +36,4 @@ suites:
       - recipe[phpunit]
       - recipe[app::nodejs]
       - recipe[app::phpmyadmin]
+      - recipe[imagemagick]
