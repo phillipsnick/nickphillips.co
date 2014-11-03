@@ -1,6 +1,10 @@
 require 'spec_helper'
 
-describe 'php-fpm' do
+describe 'php' do
+  describe package('php5-cli') do
+    it { should be_installed }
+  end
+
   describe package('php5-fpm') do
     it { should be_installed }
   end
@@ -20,5 +24,15 @@ describe 'php-fpm' do
     its(:stdout) { should match /pdo_mysql/ }
     its(:stdout) { should match /Xdebug/ }
     its(:stdout) { should match /mcrypt/ }
+    its(:stdout) { should match /imagick/ }
+  end
+
+  describe file('/etc/php5/fpm/pool.d/www.conf') do
+    it { should contain 'php_value[date.timezone] = Europe/London' }
+  end
+
+  # Check date.timezone is set for php5-cli
+  describe command('php -i') do
+    its(:stdout) { should match /Europe\/London/ }
   end
 end

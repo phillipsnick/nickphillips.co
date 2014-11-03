@@ -17,6 +17,9 @@ use Symfony\Component\Debug\Debug;
 //    exit('You are not allowed to access this file. Check '.basename(__FILE__).' for more information.');
 //}
 
+// Debugging considerations see:
+// http://symfony.com/doc/current/cookbook/debugging.html
+
 $loader = require_once __DIR__.'/../app/bootstrap.php.cache';
 Debug::enable();
 

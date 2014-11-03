@@ -37,3 +37,9 @@ bin/*
 /build/
 /vendor/
 /bin/
+
+# NodeJS
+/node_modules
+/bower_components
+/web/assets/css/
+/web/assets/js/
