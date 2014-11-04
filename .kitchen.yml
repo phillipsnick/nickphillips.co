@@ -12,8 +12,8 @@ provisioner:
 platforms:
   - name: ubuntu-14.04
     driver:
-      box: opscode-ubuntu-14.04
-      box_url: https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_ubuntu-14.04_provisionerless.box
+      box: vagrant box add ubuntu/trusty64
+      #box_url: https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_ubuntu-14.04_provisionerless.box
 #    driver:
 #      provider: parallels
     driver_config:

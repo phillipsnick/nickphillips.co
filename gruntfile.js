@@ -6,6 +6,12 @@ module.exports = function(grunt) {
       all: ['gruntfile.js']
     },
 
+    'sf2-console': {
+      'twig-lint': {
+        cmd: 'twig:lint src'
+      }
+    },
+
     less: {
       files: {
         src: 'bower_components/bootstrap/less/bootstrap.less',
@@ -40,7 +46,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-symfony2');
 
   grunt.registerTask('default', ['jshint', 'less', 'uglify']);
-  grunt.registerTask('test', ['jshint']);
+  grunt.registerTask('test', ['jshint', 'sf2-console']);
 };

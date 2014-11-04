@@ -13,6 +13,32 @@ __STATUS:__ huge work in progress currently ;)
 
 notes: Vagrant, virtual box?
 
+
+Install Test Kitchen
+
+```gem install test-kitchen```
+
+Check the kitchen command is available.
+
+```kitchen version```
+
+__NOTE: optional ___
+
+Setup brew cask
+
+```brew install caskroom/cask/brew-cask```
+
+Install Vagrant
+
+```brew cask install vagrant```
+
+Install kitchen vagrant driver
+
+```gem install kitchen-vagrant```
+
+
+
+
 ## Bookmarks
 
 ### The project
