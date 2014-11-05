@@ -12,13 +12,11 @@ provisioner:
 platforms:
   - name: ubuntu-14.04
     driver:
-      box: vagrant box add ubuntu/trusty64
-      #box_url: https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_ubuntu-14.04_provisionerless.box
-#    driver:
-#      provider: parallels
+      provider: vmware_fusion
+     # box_url: https://vagrantcloud.com/parallels/boxes/ubuntu-14.04/versions/3/providers/parallels.box
     driver_config:
       network:
-      - ["private_network", {ip: "192.168.100.10"}]
+      - ["private_network", {ip: "192.168.102.10"}]
 
 suites:
   - name: webapp
