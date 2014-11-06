@@ -2,7 +2,7 @@
 driver:
   name: vagrant
   synced_folders:
-    - [".", "/vagrant"]
+    - [".", "/vagrant", "nfs: true"]
 
 provisioner:
   name: chef_solo
