@@ -9,7 +9,7 @@ notes: symfony2, angularjs, test kitchen, doctrine?
 __STATUS:__ huge work in progress currently ;)
 
 
-## Development Setup
+## Development Setup Getting Started
 
 notes: Vagrant, virtual box?
 
@@ -36,6 +36,8 @@ Install kitchen vagrant driver
 
 ```gem install kitchen-vagrant```
 
+
+vagrant plugin install vagrant-omnibus
 
 
 

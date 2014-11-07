@@ -13,10 +13,9 @@ platforms:
   - name: ubuntu-14.04
     driver:
       provider: vmware_fusion
-     # box_url: https://vagrantcloud.com/parallels/boxes/ubuntu-14.04/versions/3/providers/parallels.box
     driver_config:
       network:
-      - ["private_network", {ip: "192.168.102.10"}]
+      - ["private_network", {ip: "192.168.103.10"}]
 
 suites:
   - name: webapp
