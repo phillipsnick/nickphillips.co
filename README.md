@@ -67,10 +67,21 @@ Unfortunately due to this it's unlikely that this package will work on Windows h
 
 * Your workstation is running OS X or *nix based operating system
 * You know how to use the command line
-* You have [VirtualBox](https://www.virtualbox.org/) or VMware [fusion](http://www.vmware.com/uk/products/fusion)/[workstation](http://www.vmware.com/uk/products/workstation) (recommended for performance reasons) installed
+* You have [VirtualBox](https://www.virtualbox.org/) or VMware [fusion](http://www.vmware.com/uk/products/fusion)/[workstation](http://www.vmware.com/uk/products/workstation) (recommended for performance) installed
 * You have git installed
 * You have [Ruby installed](https://www.ruby-lang.org/en/installation/)
 
+
+#### Chef Development kit
+
+Download and install the appropriate installer from [their website](https://downloads.getchef.com/chef-dk/)
+
+Or if you use OS X you can use [homebrew cask](https://github.com/caskroom/homebrew-cask).
+
+```bash
+brew install caskroom/cask/brew-cask
+brew cask install chefdk
+```
 
 #### Vagrant
 
@@ -117,11 +128,15 @@ Please see the [tests section](##Tests) below for running the test suite.
 
 #### Starting the VM
 
+__TODO:__ do  we need `berks install` ??
+
 Now all the software packages are installed on the host machine you can now start the VM using Vagrant.
 
 ```bash
 vagrant up
 ```
+
+*Note that it may ask for administrator privileges due to the NFS shared folders*
 
 Now might be a good time to make a coffee or two ;)
 
