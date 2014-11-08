@@ -1,7 +1,6 @@
 # Managed by Chef for <%= node['hostname'] %>
 
 Listen <%= node['phpmyadmin']['port'] %>
-NameVirtualHost *:<%= node['phpmyadmin']['port'] %>
 
 <VirtualHost *:<%= node['phpmyadmin']['port'] %>>
     ServerAdmin <%= node['apache']['contact'] %>

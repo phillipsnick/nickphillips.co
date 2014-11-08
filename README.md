@@ -1,10 +1,10 @@
 # nickphillips.co
 
-Source for nickphillips.co portfolio website.
+Source for nickphillips.co blog and portfolio website.
 
-Includes full development VM environment provisioning with Vagrant and Chef.
-
-notes: symfony2, angularjs, test kitchen, doctrine?
+Includes full development VM environment provisioning with [Vagrant](https://www.vagrantup.com/) and [Chef](https://www.getchef.com/). Tested with [Test Kitchen](https://github.com/test-kitchen/test-kitchen). 
+Server side application built in PHP using Symfony2 and Doctrine 2 using a mySQL database.
+Frontend build using AngularJS and Bootstrap (LESS).
 
 __STATUS:__ huge work in progress currently ;)
 
@@ -36,7 +36,7 @@ Install kitchen vagrant driver
 
 ```gem install kitchen-vagrant```
 
-
+??
 vagrant plugin install vagrant-omnibus
 
 

@@ -14,7 +14,7 @@ pkg/
 
 # Berkshelf
 .vagrant
-/cookbooks
+#/cookbooks
 Berksfile.lock
 
 # Bundler

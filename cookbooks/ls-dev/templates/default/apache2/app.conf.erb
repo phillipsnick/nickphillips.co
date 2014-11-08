@@ -1,4 +1,5 @@
 # Managed by Chef for <%= node['hostname'] %>
+
 <VirtualHost *:<%= node['apache']['listen_ports'].first %>>
     ServerAdmin <%= node['apache']['contact'] %>
 
