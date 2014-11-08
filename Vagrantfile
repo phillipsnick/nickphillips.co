@@ -2,6 +2,14 @@ Vagrant.configure("2") do |config|
   config.vm.box = "opscode-ubuntu-14.04"
   config.vm.box_url = "https://vagrantcloud.com/chef/boxes/ubuntu-14.04/versions/1/providers/vmware_desktop.box"
 
+  if Vagrant.has_plugin?("vagrant-cachier")
+    config.cache.scope = :box
+    config.cache.synced_folder_opts = {
+      type: :nfs,
+      mount_options: ['rw', 'vers=3', 'tcp', 'nolock']
+    }
+  end
+
   config.omnibus.chef_version = :latest
   config.berkshelf.enabled = true
 
