@@ -11,5 +11,6 @@ include_recipe 'phpunit'
 include_recipe 'ls-dev::nodejs'
 include_recipe 'ls-dev::phpmyadmin'
 include_recipe 'imagemagick'
+include_recipe 'ls-dev::bower'
 
 #- recipe[test-helper::default]

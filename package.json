@@ -21,6 +21,7 @@
   "homepage": "https://github.com/phillipsnick/nickphillips.co",
   "devDependencies": {
     "grunt": "^0.4.5",
+    "grunt-bower-task": "^0.4.0",
     "grunt-contrib-cssmin": "^0.10.0",
     "grunt-contrib-jshint": "^0.10.0",
     "grunt-contrib-less": "^0.12.0",
