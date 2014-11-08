@@ -1,4 +1,7 @@
 Vagrant.configure("2") do |config|
+  # OCD fix to prevent 'stdin: is not a tty' error in Ubuntu provisioning (see #36 for more details)
+  config.ssh.pty = true
+
   config.vm.box = "opscode-ubuntu-14.04"
   #config.vm.provider :vmware_fusion do |p|
 
@@ -26,8 +29,7 @@ Vagrant.configure("2") do |config|
     box.berkshelf.enabled = true
 
     box.vm.provision :chef_solo do |chef|
-      chef.add_recipe 'git'
-      chef.add_recipe 'app::apache2'
+      chef.add_recipe 'app::ls-dev'
     end
   end
 end
