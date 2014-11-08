@@ -72,30 +72,6 @@ Unfortunately due to this it's unlikely that this package will work on Windows h
 * You have [Ruby installed](https://www.ruby-lang.org/en/installation/)
 
 
-### Virtual Machine Providers
-
-Vagrant supports a number of different [providers](https://docs.vagrantup.com/v2/providers/). While the majority of the 
-development community opts for the free option [VirtualBox](https://www.virtualbox.org/), I personally use VMware Fusion 
-even though it might be one of the more expensive options considering you also need a 
-[Vagrant licence](https://www.vagrantup.com/vmware). It has proved to be very reliable over the years and some the fact
-some of my servers run ESXi helped sway my decision.
-
-Early on in this projects development I ran some extremely basic benchmarks against VirtualBox, VMware Fusion and 
-Parallels Desktop. In this test I ran the provisioning three times with all package caching disabled and picked the 
-fastest time for the below results.
-
-Also tested Symfony2 page speed (readout from development toolbar) on a fairly simple page with a few templates and 
-no database queries, without pre-warming the cache. Then recorded the first time and the fastest time of 4 refreshes. 
-
-|Provider|Provisioning Time|First Page Load|Fastest Page Load|
-|VirtualBox|18m15s|1345ms|961ms|
-|Parallels|8m45s|1368ms|69ms|
-|VMware Fusion|8m13s|416ms|32ms|
-
-Understandably these are not the most reliable tests as these are just out of the box speeds, was more curiosity than 
-anything else!
-
-
 #### Vagrant
 
 Either install Vagrant by downloading the appropriate installer from [their website](https://www.vagrantup.com/downloads.html).
@@ -108,6 +84,8 @@ brew cask install vagrant
 ```
 
 #### Vagrant configuration
+
+By default VirtualBox is the default provider, if you are using another provider please see [Vagrant docs](https://docs.vagrantup.com/v2/providers/default.html).
 
 We require a few Vagrant plugins to get the VM provisioned.
 
@@ -122,10 +100,10 @@ vagrant plugin install vagrant-omnibus vagrant-berkshelf
 
 If you wish to run the provisioning test suite, Test Kitchen will need installing.
 
-Install Test Kitchen
+Install Test Kitchen and the vagrant driver
 
 ```bash
-gem install test-kitchen
+gem install test-kitchen kitchen-vagrant
 ```
 
 Check the kitchen command is available.
@@ -134,11 +112,18 @@ Check the kitchen command is available.
 kitchen version
 ```
 
-Install kitchen vagrant driver
+Please see the [tests section](##Tests) below for running the test suite.
 
+
+#### Starting the VM
+
+Now all the software packages are installed on the host machine you can now start the VM using Vagrant.
+
+```bash
+vagrant up
 ```
-gem install kitchen-vagrant
-```
+
+Now might be a good time to make a coffee or two ;)
 
 
 ## Bookmarks
@@ -158,6 +143,40 @@ http://192.168.100.10:1090
 notes: add details?
 
 ## Tests
+
+### PHPUnit
+
+### Test Kitchen
+
+### JS?
+
+## Notes
+
+
+### Virtual Machine Providers
+
+Vagrant supports a number of different [providers](https://docs.vagrantup.com/v2/providers/). While the majority of the 
+development community opts for the free option [VirtualBox](https://www.virtualbox.org/), I personally use VMware Fusion 
+even though it might be one of the more expensive options considering you also need a 
+[Vagrant licence](https://www.vagrantup.com/vmware). It has proved to be very reliable over the years and some the fact
+some of my servers run ESXi helped sway my decision.
+
+Early on in this projects development I ran some extremely basic benchmarks against VirtualBox, VMware Fusion and 
+Parallels Desktop. In this test I ran the provisioning three times with all package caching disabled and picked the 
+fastest time for the below results.
+
+Also tested Symfony2 page speed (readout from development toolbar) on a fairly simple page with a few templates and 
+no database queries, without pre-warming the cache. Then recorded the first time and the fastest time of 4 refreshes. 
+
+|Provider|Provisioning Time|First Page Load|Fastest Page Load|
+|---|---|---|---|
+|VirtualBox|18m15s|1345ms|961ms|
+|Parallels|8m45s|1368ms|69ms|
+|VMware Fusion|8m13s|416ms|32ms|
+
+Understandably these are not the most reliable tests as these are just out of the box configurations, was more 
+curiosity than anything else!
+
 
 ## Versioning
 
