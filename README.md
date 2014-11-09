@@ -48,6 +48,8 @@ Breakdown of all the software and libraries used for this project.
 
 * [Symfony2](http://symfony.com/)
 * [Doctrine](http://www.doctrine-project.org/)
+* [Sonata Admin](http://sonata-project.org/)
+* [FOSUserBundle](https://github.com/FriendsOfSymfony/FOSUserBundle/)
 * [Twig](http://twig.sensiolabs.org/)
 
 
