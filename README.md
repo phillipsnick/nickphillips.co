@@ -34,6 +34,7 @@ Breakdown of all the software and libraries used for this project.
 * [Grunt](http://gruntjs.com/)
   * [grunt-bower-task](https://github.com/yatskevich/grunt-bower-task)
   * [grunt-contrib-jshint](https://github.com/gruntjs/grunt-contrib-jshint)
+  * [grunt-lesslint](https://github.com/jgable/grunt-lesslint)
   * [grunt-contrib-uglify](https://github.com/gruntjs/grunt-contrib-uglify)
   * [grunt-contrib-less](https://github.com/gruntjs/grunt-contrib-less)
   * [grunt-contrib-watch](https://github.com/gruntjs/grunt-contrib-watch)
