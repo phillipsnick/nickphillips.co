@@ -30,7 +30,8 @@ class UserData  implements FixtureInterface, ContainerAwareInterface
         $user
             ->setEmail('nick@linkstudios.co.uk')
             ->setPlainPassword('nick')
-            ->setEnabled(true);
+            ->setEnabled(true)
+            ->addRole('ROLE_SUPER_ADMIN');
 
         $userManager->updateUser($user);
     }
