@@ -13,7 +13,8 @@ class UserData implements FixtureInterface
         $user = new User();
         $user
             ->setEmail('nick@linkstudios.co.uk')
-            ->setPassword('nick');
+            ->setPassword('nick')
+            ->setEnabled(true);
 
         $manager->persist($user);
         $manager->flush();
