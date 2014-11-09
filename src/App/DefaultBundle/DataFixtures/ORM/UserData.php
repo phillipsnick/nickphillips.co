@@ -4,19 +4,34 @@ namespace App\DefaultBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use App\DefaultBundle\Entity\User;
+use Symfony\Component\DependencyInjection\ContainerAwareInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
-class UserData implements FixtureInterface
+class UserData  implements FixtureInterface, ContainerAwareInterface
 {
+    /**
+     * @var ContainerInterface
+     */
+    private $container;
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setContainer(ContainerInterface $container = null)
+    {
+        $this->container = $container;
+    }
+
     public function load(ObjectManager $manager)
     {
-        $user = new User();
+        $userManager = $this->container->get('fos_user.user_manager');
+
+        $user = $userManager->createUser();
         $user
             ->setEmail('nick@linkstudios.co.uk')
-            ->setPassword('nick')
+            ->setPlainPassword('nick')
             ->setEnabled(true);
 
-        $manager->persist($user);
-        $manager->flush();
+        $userManager->updateUser($user);
     }
 }
