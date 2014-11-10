@@ -23,6 +23,7 @@ class User extends BaseUser
      */
     protected $groups;
 
+
     public function setEmail($email)
     {
         if (is_null($this->getUsername())) {
