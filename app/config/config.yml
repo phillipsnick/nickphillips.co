@@ -1,7 +1,7 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
-    - { resource: sonata_core.yml }
+    - { resource: sonata.yml }
 
 framework:
     #esi:             ~
@@ -54,9 +54,18 @@ doctrine:
         password: "%database_password%"
         charset:  UTF8
 
+        types:
+            json: Sonata\Doctrine\Types\JsonType
+
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true
+        #entity_managers:
+       #     default:
+         #       mappings:
+         #           AppDefaultBundle: ~
+                    #ApplicationSonataUserBundle: ~
+                    #SonataUserBundle: ~
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -67,17 +76,13 @@ swiftmailer:
     spool:     { type: memory }
 
 fos_user:
-    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    db_driver: orm
     firewall_name: main
     user_class: App\DefaultBundle\Entity\User
 
-sonata_admin:
-    security:
-        handler: sonata.admin.security.handler.role
+    group:
+        group_class:   App\DefaultBundle\Entity\Group
+        group_manager: sonata.user.orm.group_manager                    # If you're using doctrine orm (use sonata.user.mongodb.user_manager for mongodb)
 
-sonata_block:
-    default_contexts: [cms]
-    blocks:
-        # Enable the SonataAdminBundle block
-        sonata.admin.block.admin_list:
-            contexts:   [admin]
+    service:
+        user_manager: sonata.user.orm.user_manager

@@ -2,7 +2,7 @@
 
 namespace App\DefaultBundle\Entity;
 
-use FOS\UserBundle\Entity\User as BaseUser;
+use Sonata\UserBundle\Entity\BaseUser as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -17,6 +17,11 @@ class User extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+    /**
+     * @ORM\Column(type="json")
+     */
+    protected $groups;
 
     public function setEmail($email)
     {
