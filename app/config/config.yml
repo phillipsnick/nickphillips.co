@@ -1,10 +1,11 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
+    - { resource: sonata.yml }
 
 framework:
     #esi:             ~
-    #translator:      { fallback: "%locale%" }
+    translator:      { fallback: "%locale%" }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -53,9 +54,18 @@ doctrine:
         password: "%database_password%"
         charset:  UTF8
 
+        types:
+            json: Sonata\Doctrine\Types\JsonType
+
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
         auto_mapping: true
+        #entity_managers:
+       #     default:
+         #       mappings:
+         #           AppDefaultBundle: ~
+                    #ApplicationSonataUserBundle: ~
+                    #SonataUserBundle: ~
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -64,3 +74,15 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: App\DefaultBundle\Entity\User
+
+    group:
+        group_class:   App\DefaultBundle\Entity\Group
+        group_manager: sonata.user.orm.group_manager                    # If you're using doctrine orm (use sonata.user.mongodb.user_manager for mongodb)
+
+    service:
+        user_manager: sonata.user.orm.user_manager
