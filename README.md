@@ -169,6 +169,20 @@ notes: add details?
 
 ### PHPUnit
 
+Login to the Vagrant VM and navigate to the apps root folder.
+
+```bash
+vagrant ssh
+cd /vagrant
+```
+
+Run PHPUnit's suite
+
+```bash
+phpunit -c app/
+```
+
+
 ### Test Kitchen
 
 ### JS?
