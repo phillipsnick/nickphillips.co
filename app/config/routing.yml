@@ -2,6 +2,10 @@ default:
     resource: "@AppDefaultBundle/Resources/config/routing.yml"
     prefix:   /
 
+news:
+    resource: '@SonataNewsBundle/Resources/config/routing/news.xml'
+    prefix: /news
+
 sonata_user_security:
     resource: "@SonataUserBundle/Resources/config/routing/sonata_security_1.xml"
 
