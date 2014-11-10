@@ -50,10 +50,10 @@ swiftmailer:
 fos_user:
     db_driver: orm
     firewall_name: main
-    user_class: App\DefaultBundle\Entity\User
+    user_class: App\UserBundle\Entity\User
 
     group:
-        group_class:   App\DefaultBundle\Entity\Group
+        group_class:   App\UserBundle\Entity\Group
         group_manager: sonata.user.orm.group_manager
 
     service:

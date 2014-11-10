@@ -1,0 +1,2 @@
+parameters:
+    sonata.user.admin.user.class: App\UserBundle\Admin\UserAdmin

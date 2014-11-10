@@ -15,8 +15,8 @@ sonata_user:
     #security_acl: true
     manager_type: orm
     class:
-        user: App\DefaultBundle\Entity\User
-        group: App\DefaultBundle\Entity\Group
+        user: App\UserBundle\Entity\User
+        group: App\UserBundle\Entity\Group
 
 sonata_block:
     default_contexts: [cms]

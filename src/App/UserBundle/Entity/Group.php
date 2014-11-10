@@ -1,6 +1,6 @@
 <?php
 
-namespace App\DefaultBundle\Entity;
+namespace App\UserBundle\Entity;
 
 use Sonata\UserBundle\Entity\BaseGroup as BaseGroup;
 use Doctrine\ORM\Mapping as ORM;

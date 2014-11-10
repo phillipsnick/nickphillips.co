@@ -21,32 +21,21 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
 
-            // Sonata
-
-
-            // App bunldes
-            new App\DefaultBundle\AppDefaultBundle(),
-
-            // Data fixtures
-
-
-            // User bundles
+            // Other core libraries
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new FOS\UserBundle\FOSUserBundle(),
-            new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
 
-            // Add your dependencies
+            // Sonata
             new Sonata\CoreBundle\SonataCoreBundle(),
             new Sonata\BlockBundle\SonataBlockBundle(),
-            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
-            //...
-
-            // If you haven't already, add the storage bundle
-            // This example uses SonataDoctrineORMAdmin but
-            // it works the same with the alternatives
+            new Sonata\AdminBundle\SonataAdminBundle(),
+            new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
             new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
 
-            // Then add SonataAdminBundle
-            new Sonata\AdminBundle\SonataAdminBundle(),
+            // App bundles
+            new App\DefaultBundle\AppDefaultBundle(),
+            new App\UserBundle\AppUserBundle(),
+
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {;
