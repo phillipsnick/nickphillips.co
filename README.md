@@ -121,11 +121,7 @@ __Optional Berkshelf modifications__
 When using the vagrant-berkshelf plugin, there is a known issue where the Berkshelf NFS share is unmounted after provisioning,
 this prevents you from running the `vagrant provision` command.
 
-A known work around is to simply reboot the machine and provision it after booting using
-
-```bash
-vagrant reload --provision
-```
+A known work around is to simply reboot the machine and provision it after booting using `vagrant reload --provision`.
 
 If making alterations to the Chef cookbooks/recipes this becomes a little tedious, a possible hack can be found under
 [#41](https://github.com/phillipsnick/nickphillips.co/issues/41).
