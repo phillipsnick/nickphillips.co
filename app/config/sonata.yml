@@ -1,3 +1,7 @@
+#imports:
+#    - { resource: sonata/news.yml }
+#    - { resource: sonata/formatter.yml }
+
 sonata_admin:
     security:
         handler: sonata.admin.security.handler.role
@@ -28,3 +32,89 @@ sonata_block:
         sonata.block.service.rss:
         sonata.admin.block.admin_list:
             contexts:   [admin]
+
+sonata_news:
+    title:        Sonata Project
+    link:         http://sonata-project.org
+    description:  Cool bundles on top of Symfony2
+    salt:         'secureToken'
+    permalink_generator: sonata.news.permalink.date # sonata.news.permalink.category
+
+    comment:
+        notification:
+            emails:   [nick@linkstudios.co.uk]
+            from:     no-reply@sonata-project.org
+            template: 'SonataNewsBundle:Mail:comment_notification.txt.twig'
+
+#news:
+#    providers:
+#        - sonata.media.provider.dailymotion
+#        - sonata.media.provider.youtube
+#        - sonata.media.provider.image
+
+#    formats:
+#        small: { width: 150 , quality: 95 }
+#        big:   { width: 500 , quality: 90 }
+
+sonata_formatter:
+    formatters:
+        markdown:
+            service: sonata.formatter.text.markdown
+            extensions:
+                - sonata.formatter.twig.control_flow
+                - sonata.formatter.twig.gist
+                - sonata.media.formatter.twig
+
+        text:
+            service: sonata.formatter.text.text
+            extensions:
+                - sonata.formatter.twig.control_flow
+                - sonata.formatter.twig.gist
+                - sonata.media.formatter.twig
+
+        rawhtml:
+            service: sonata.formatter.text.raw
+            extensions:
+                - sonata.formatter.twig.control_flow
+                - sonata.formatter.twig.gist
+                - sonata.media.formatter.twig
+
+        richhtml:
+            service: sonata.formatter.text.raw
+            extensions:
+                - sonata.formatter.twig.control_flow
+                - sonata.formatter.twig.gist
+                - sonata.media.formatter.twig
+
+sonata_media:
+    # if you don't use default namespace configuration
+    #class:
+    #    media: MyVendor\MediaBundle\Entity\Media
+    #    gallery: MyVendor\MediaBundle\Entity\Gallery
+    #    gallery_has_media: MyVendor\MediaBundle\Entity\GalleryHasMedia
+    default_context: default
+    db_driver: doctrine_orm # or doctrine_mongodb, doctrine_phpcr
+    contexts:
+        default:  # the default context is mandatory
+            providers:
+                - sonata.media.provider.dailymotion
+                - sonata.media.provider.youtube
+                - sonata.media.provider.image
+                - sonata.media.provider.file
+
+            formats:
+                small: { width: 100 , quality: 70 }
+                big:   { width: 500 , quality: 70 }
+
+    cdn:
+        server:
+            path: /uploads/media # http://media.sonata-project.org/
+
+    filesystem:
+        local:
+            directory:  %kernel.root_dir%/../web/uploads/media
+            create:     false
+
+    providers:
+        image:
+            adapter: sonata.media.adapter.image.imagick

@@ -36,6 +36,21 @@ class AppKernel extends Kernel
             new App\DefaultBundle\AppDefaultBundle(),
             new App\UserBundle\AppUserBundle(),
 
+
+
+            //new Sonata\MarkItUpBundle\SonataMarkItUpBundle(),
+            new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
+            new Sonata\NewsBundle\SonataNewsBundle(),
+
+            new Sonata\MediaBundle\SonataMediaBundle(),
+
+            new Sonata\IntlBundle\SonataIntlBundle(),
+            new Sonata\FormatterBundle\SonataFormatterBundle(),
+            new Sonata\ClassificationBundle\SonataClassificationBundle(),
+
+            new Knp\Bundle\MarkdownBundle\KnpMarkdownBundle(),
+
+            new JMS\SerializerBundle\JMSSerializerBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {;
