@@ -104,7 +104,8 @@ brew cask install vagrant
 
 #### Vagrant configuration
 
-By default VirtualBox is the default provider, if you are using another provider please see [Vagrant docs](https://docs.vagrantup.com/v2/providers/default.html).
+By default VirtualBox is the default provider, if you are using another provider please see
+[Vagrant docs](https://docs.vagrantup.com/v2/providers/default.html).
 
 We require a few Vagrant plugins to get the VM provisioned.
 
@@ -114,6 +115,21 @@ We require a few Vagrant plugins to get the VM provisioned.
 ```bash
 vagrant plugin install vagrant-omnibus vagrant-berkshelf
 ```
+
+__Optional Berkshelf modifications__
+
+When using the vagrant-berkshelf plugin, there is a known issue where the Berkshelf NFS share is unmounted after provisioning,
+this prevents you from running the `vagrant provision` command.
+
+A known work around is to simply reboot the machine and provision it after booting using
+
+```bash
+vagrant reload --provision
+```
+
+If making alterations to the Chef cookbooks/recipes this becomes a little tedious, a possible hack can be found under
+[#41](https://github.com/phillipsnick/nickphillips.co/issues/41).
+
 
 #### Test Kitchen 
 
