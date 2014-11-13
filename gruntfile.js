@@ -90,6 +90,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-phplint');
   grunt.loadNpmTasks('grunt-symfony2');
 
-  grunt.registerTask('default', ['bower', 'jshint', 'less', 'uglify']);
-  grunt.registerTask('test', ['phpcs', 'jshint', 'lesslint', 'sf2-console']);
+  grunt.registerTask('default', ['bower', 'less', 'uglify']);
+  grunt.registerTask('test', ['phpcs', 'phplint', 'jshint', 'lesslint', 'sf2-console']);
 };
