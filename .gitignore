@@ -43,3 +43,4 @@ bin/*
 /bower_components
 /web/assets/css/
 /web/assets/js/
+npm-debug.log
