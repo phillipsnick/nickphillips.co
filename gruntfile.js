@@ -48,11 +48,13 @@ module.exports = function(grunt) {
     phpcs: {
       application: {
         dir: [
+          'app/*.php',
           'src/'
         ]
       },
       options: {
-        standard: 'PSR2'
+        bin: './vendor/squizlabs/php_codesniffer/scripts/phpcs',
+        standard: './app/Resources/phpcs/ruleset.xml'
       }
     },
 
@@ -61,7 +63,8 @@ module.exports = function(grunt) {
         swapPath: '/tmp'
       },
       all: [
-        'src'
+        'app/*.php',
+        'src/**/*.php'
       ]
     },
 
