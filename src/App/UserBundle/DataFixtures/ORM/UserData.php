@@ -7,7 +7,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-class UserData  implements FixtureInterface, ContainerAwareInterface
+class UserData implements FixtureInterface, ContainerAwareInterface
 {
     /**
      * @var ContainerInterface

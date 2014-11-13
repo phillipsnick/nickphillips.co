@@ -45,6 +45,26 @@ module.exports = function(grunt) {
       }
     },
 
+    phpcs: {
+      application: {
+        dir: [
+          'src/'
+        ]
+      },
+      options: {
+        standard: 'PSR2'
+      }
+    },
+
+    phplint: {
+      options: {
+        swapPath: '/tmp'
+      },
+      all: [
+        'src'
+      ]
+    },
+
     watch: {
       scripts: {
         files: [],
@@ -63,8 +83,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-phpcs');
+  grunt.loadNpmTasks('grunt-phplint');
   grunt.loadNpmTasks('grunt-symfony2');
 
   grunt.registerTask('default', ['bower', 'jshint', 'less', 'uglify']);
-  grunt.registerTask('test', ['jshint', 'lesslint', 'sf2-console']);
+  grunt.registerTask('test', ['phpcs', 'jshint', 'lesslint', 'sf2-console']);
 };

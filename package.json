@@ -29,6 +29,8 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-lesslint": "^1.1.13",
     "grunt-modernizr": "^0.6.0",
+    "grunt-phpcs": "^0.2.3",
+    "grunt-phplint": "0.0.5",
     "grunt-symfony2": "^0.4.0"
   }
 }

@@ -12,7 +12,6 @@ use Sonata\AdminBundle\Show\ShowMapper;
 use FOS\UserBundle\Model\UserManagerInterface;
 use Sonata\AdminBundle\Route\RouteCollection;
 
-
 class UserAdmin extends BaseUserAdmin
 {
     /**
@@ -25,13 +24,11 @@ class UserAdmin extends BaseUserAdmin
             ->add('groups')
             ->add('enabled', null, array('editable' => true))
             ->add('locked', null, array('editable' => true))
-            ->add('createdAt')
-        ;
+            ->add('createdAt');
 
         if ($this->isGranted('ROLE_ALLOWED_TO_SWITCH')) {
             $listMapper
-                ->add('impersonating', 'string', array('template' => 'SonataUserBundle:Admin:Field/impersonating.html.twig'))
-            ;
+                ->add('impersonating', 'string', array('template' => 'SonataUserBundle:Admin:Field/impersonating.html.twig'));
         }
     }
 
@@ -44,8 +41,7 @@ class UserAdmin extends BaseUserAdmin
             ->add('id')
             ->add('locked')
             ->add('email')
-            ->add('groups')
-        ;
+            ->add('groups');
     }
 
     /**
@@ -82,8 +78,7 @@ class UserAdmin extends BaseUserAdmin
             ->with('Security')
             ->add('token')
             ->add('twoStepVerificationCode')
-            ->end()
-        ;
+            ->end();
     }
 
     /**
@@ -94,16 +89,24 @@ class UserAdmin extends BaseUserAdmin
         $formMapper
             ->with('General')
             ->add('email')
-            ->add('plainPassword', 'text', array(
-                'required' => (!$this->getSubject() || is_null($this->getSubject()->getId()))
-            ))
+            ->add(
+                'plainPassword',
+                'text',
+                array(
+                    'required' => (!$this->getSubject() || is_null($this->getSubject()->getId()))
+                )
+            )
             ->end()
             ->with('Groups')
-            ->add('groups', 'sonata_type_model', array(
-                'required' => false,
-                'expanded' => true,
-                'multiple' => true
-            ))
+            ->add(
+                'groups',
+                'sonata_type_model',
+                array(
+                    'required' => false,
+                    'expanded' => true,
+                    'multiple' => true
+                )
+            )
             ->end()
             ->with('Profile')
             ->add('dateOfBirth', 'birthday', array('required' => false))
@@ -111,10 +114,14 @@ class UserAdmin extends BaseUserAdmin
             ->add('lastname', null, array('required' => false))
             ->add('website', 'url', array('required' => false))
             ->add('biography', 'text', array('required' => false))
-            ->add('gender', 'sonata_user_gender', array(
-                'required' => true,
-                'translation_domain' => $this->getTranslationDomain()
-            ))
+            ->add(
+                'gender',
+                'sonata_user_gender',
+                array(
+                    'required' => true,
+                    'translation_domain' => $this->getTranslationDomain()
+                )
+            )
             ->add('locale', 'locale', array('required' => false))
             ->add('timezone', 'timezone', array('required' => false))
             ->add('phone', null, array('required' => false))
@@ -126,31 +133,32 @@ class UserAdmin extends BaseUserAdmin
             ->add('twitterName', null, array('required' => false))
             ->add('gplusUid', null, array('required' => false))
             ->add('gplusName', null, array('required' => false))
-            ->end()
-        ;
+            ->end();
 
         if ($this->getSubject() && !$this->getSubject()->hasRole('ROLE_SUPER_ADMIN')) {
             $formMapper
                 ->with('Management')
-                ->add('realRoles', 'sonata_security_roles', array(
-                    'label'    => 'form.label_roles',
-                    'expanded' => true,
-                    'multiple' => true,
-                    'required' => false
-                ))
+                ->add(
+                    'realRoles',
+                    'sonata_security_roles',
+                    array(
+                        'label'    => 'form.label_roles',
+                        'expanded' => true,
+                        'multiple' => true,
+                        'required' => false
+                    )
+                )
                 ->add('locked', null, array('required' => false))
                 ->add('expired', null, array('required' => false))
                 ->add('enabled', null, array('required' => false))
                 ->add('credentialsExpired', null, array('required' => false))
-                ->end()
-            ;
+                ->end();
         }
 
         $formMapper
             ->with('Security')
             ->add('token', null, array('required' => false))
             ->add('twoStepVerificationCode', null, array('required' => false))
-            ->end()
-        ;
+            ->end();
     }
 }

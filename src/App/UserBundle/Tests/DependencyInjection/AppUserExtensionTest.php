@@ -32,5 +32,4 @@ class AppUserExtensionTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertEquals($value, $this->configuration->getParameter($key), sprintf('%s parameter is correct', $key));
     }
-
 }
