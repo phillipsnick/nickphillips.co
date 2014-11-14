@@ -22,8 +22,10 @@ Vagrant.configure("2") do |config|
     box.vm.synced_folder ".", "/vagrant", nfs: true
 
     box.vm.provision :chef_solo do |chef|
-      chef.custom_config_path = "./chef/vagrant.rb"
-      chef.synced_folder_type = "nfs"
+      chef.data_bags_path       = "./data_bags"
+      chef.custom_config_path   = "./chef/vagrant.rb"
+      chef.synced_folder_type   = "nfs"
+      
       chef.add_recipe "ls-dev"
     end
   end
