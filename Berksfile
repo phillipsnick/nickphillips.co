@@ -1,7 +1,5 @@
 source "https://supermarket.getchef.com"
 
-metadata
-
 cookbook 'ls-dev', path: 'chef/cookbooks/ls-dev'
 cookbook 'MailCatcher', :github => 'bryantebeek/chef-mailcatcher'
 

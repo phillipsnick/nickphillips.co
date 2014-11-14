@@ -4,8 +4,8 @@ Source for nickphillips.co blog and portfolio website.
 
 Includes full development VM environment provisioning with [Vagrant](https://www.vagrantup.com/) and 
 [Chef](https://www.getchef.com/). Tested with [Test Kitchen](https://github.com/test-kitchen/test-kitchen). 
-Server side application built in PHP using Symfony2 and Doctrine 2 using a mySQL database.
-Frontend built using AngularJS and Bootstrap (LESS).
+Server side application built in PHP using [Symfony2](http://symfony.com/) and [Doctrine 2](http://www.doctrine-project.org/) using a mySQL database.
+Frontend built using [AngularJS](https://angularjs.org/) and [Bootstrap](http://getbootstrap.com) (LESS).
 
 __STATUS:__ huge work in progress currently ;)
 
@@ -75,7 +75,7 @@ Unfortunately due to this it's unlikely that this package will work on Windows h
 
 * Your workstation is running OS X or *nix based operating system
 * You know how to use the command line
-* You have [VirtualBox](https://www.virtualbox.org/) or VMware [fusion](http://www.vmware.com/uk/products/fusion)/[workstation](http://www.vmware.com/uk/products/workstation) (recommended for performance) installed
+* You have [VirtualBox](https://www.virtualbox.org/) or VMware [Fusion](http://www.vmware.com/uk/products/fusion)/[Workstation](http://www.vmware.com/uk/products/workstation) (recommended for performance) installed
 * You have git installed
 * You have [Ruby installed](https://www.ruby-lang.org/en/installation/)
 
