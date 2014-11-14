@@ -1,3 +1,6 @@
+vcpus     = "2"
+memory    = "1024"
+
 Vagrant.configure("2") do |config|
   config.vm.box = "opscode-ubuntu-14.04"
   config.vm.box_url = "https://vagrantcloud.com/chef/boxes/ubuntu-14.04/versions/1/providers/vmware_desktop.box"
@@ -17,6 +20,16 @@ Vagrant.configure("2") do |config|
   #config.vm.hostname = "webapp-ubuntu-1404.vagrantup.com"
 
   config.vm.define :web do |box|
+    box.vm.provider "virtualbox" do |v|
+      v.cpus    = vcpus
+      v.memory  = memory
+    end
+
+    box.vm.provider "vmware_fusion" do |v|
+      v.vmx["numvcpus"] = vcpus
+      v.vmx["memsize"]  = memory
+    end
+
     box.vm.network "private_network", ip: "192.168.15.12"
 
     box.vm.synced_folder ".", "/vagrant", nfs: true
