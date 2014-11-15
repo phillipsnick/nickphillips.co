@@ -1,11 +1,10 @@
 {
-  "name": "nickphillips.co",
-  "version": "0.0.1",
+  "name": "phillipsnick/nickphillips.co",
   "homepage": "https://github.com/phillipsnick/nickphillips.co",
   "authors": [
     "Nick Phillips <nick@linkstudios.co.uk>"
   ],
-  "description": "Source for nickphillips.co portfolio website",
+  "description": "Source for nickphillips.co blog and portfolio website",
   "moduleType": [
     "node"
   ],

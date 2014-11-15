@@ -1,8 +1,10 @@
 {
-    "name": "symfony/framework-standard-edition",
+    "name": "phillipsnick/nickphillips.co",
+    "description": "Source for nickphillips.co blog and portfolio website",
+    "version": "0.0.1",
     "license": "MIT",
+    "homepage": "http://nickphillips.co",
     "type": "project",
-    "description": "The \"Symfony Standard Edition\" distribution",
     "autoload": {
         "psr-0": { "": "src/", "SymfonyStandard": "app/" }
     },

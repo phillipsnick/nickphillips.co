@@ -32,15 +32,21 @@ Breakdown of all the software and libraries used for this project.
   * [Test Kitchen](http://kitchen.ci/)
   * [Berkshelf](http://berkshelf.com/)
 * [Grunt](http://gruntjs.com/)
+  * [load-grunt-tasks](https://github.com/sindresorhus/load-grunt-tasks)
+  * [grunt-update-json](https://github.com/AndreasPizsa/grunt-update-json)
+  * [grunt-contrib-watch](https://github.com/gruntjs/grunt-contrib-watch)
+  * [grunt-contrib-uglify](https://github.com/gruntjs/grunt-contrib-uglify)
   * [grunt-bower-task](https://github.com/yatskevich/grunt-bower-task)
   * [grunt-contrib-jshint](https://github.com/gruntjs/grunt-contrib-jshint)
-  * [grunt-lesslint](https://github.com/jgable/grunt-lesslint)
-  * [grunt-contrib-uglify](https://github.com/gruntjs/grunt-contrib-uglify)
+  * [grunt-contrib-cssmin](https://github.com/gruntjs/grunt-contrib-cssmin)
   * [grunt-contrib-less](https://github.com/gruntjs/grunt-contrib-less)
-  * [grunt-contrib-watch](https://github.com/gruntjs/grunt-contrib-watch)
+  * [grunt-lesslint](https://github.com/jgable/grunt-lesslint)
+  * [grunt-phpcs](https://github.com/SaschaGalley/grunt-phpcs)
+  * [grunt-phplint](https://github.com/jgable/grunt-phplint)
 * [MailCatcher](http://mailcatcher.me/)
 * [phpMyAdmin](http://www.phpmyadmin.net/home_page/index.php)
 * [Composer](https://getcomposer.org/)
+* [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer)
 * [Bower](http://bower.io/)
 
 
@@ -159,6 +165,34 @@ vagrant up
 *Note that it may ask for administrator privileges due to the NFS shared folders*
 
 Now might be a good time to make a coffee or two ;)
+
+
+## Development
+
+### Keeping JSON files in sync
+
+In this repository we have three JSON files which contain some identical meta data fields.
+* `composer.json` - PHP package manager definitions
+* `package.json` - NodeJS/NPM package manager
+* `bower.json` - Front end package manager
+
+Each of these files contain one or more of the following fields which contain identical information:
+* `name` - Project name
+* `description` - Project description
+* `license` - License information
+* `version` - Current version
+* `homepage` - Homepage URL
+
+To make life a little easier updating this information, the above fields should only ever be edited in composer.json.
+
+Then the grunt task for syncing JSON files should be run:
+
+```bash
+grunt update_json
+```
+
+More details on this task can be found on the [grunt-update-json](https://github.com/AndreasPizsa/grunt-update-json) page
+and inside the gruntfile.js inside this repository.
 
 
 ## Bookmarks

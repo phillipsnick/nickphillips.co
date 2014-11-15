@@ -68,6 +68,31 @@ module.exports = function(grunt) {
       ]
     },
 
+    update_json: {
+      options: {
+        src: 'composer.json',
+        indent: '  '
+      },
+      bower: {
+        dest: 'bower.json',
+        fields: {
+          'name':         null,
+          'description':  null,
+          'license':      null
+        }
+      },
+      package: {
+        dest: 'package.json',
+        fields: {
+          'name':         null,
+          'description':  null,
+          'license':      null,
+          'version':      null,
+          'homepage':     null
+        }
+      }
+    },
+
     watch: {
       scripts: {
         files: [],
@@ -80,16 +105,9 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.loadNpmTasks('grunt-bower-task');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-lesslint');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-less');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-phpcs');
-  grunt.loadNpmTasks('grunt-phplint');
-  grunt.loadNpmTasks('grunt-symfony2');
+  require('load-grunt-tasks')(grunt);
 
+  grunt.registerTask('json', 'update_json');
   grunt.registerTask('default', ['bower', 'less', 'uglify']);
   grunt.registerTask('test', ['phpcs', 'phplint', 'jshint', 'lesslint', 'sf2-console']);
 };

@@ -1,7 +1,7 @@
 {
-  "name": "nickphillips.co",
+  "name": "phillipsnick/nickphillips.co",
   "version": "0.0.1",
-  "description": "Source for nickphillips.co portfolio website",
+  "description": "Source for nickphillips.co blog and portfolio website",
   "main": " ",
   "directories": {
     "test": "test"
@@ -18,7 +18,7 @@
   "bugs": {
     "url": "https://github.com/phillipsnick/nickphillips.co/issues"
   },
-  "homepage": "https://github.com/phillipsnick/nickphillips.co",
+  "homepage": "http://nickphillips.co",
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-bower-task": "^0.4.0",
@@ -31,6 +31,8 @@
     "grunt-modernizr": "^0.6.0",
     "grunt-phpcs": "^0.2.3",
     "grunt-phplint": "0.0.5",
-    "grunt-symfony2": "^0.4.0"
+    "grunt-symfony2": "^0.4.0",
+    "grunt-update-json": "^0.2.1",
+    "load-grunt-tasks": "^1.0.0"
   }
 }
