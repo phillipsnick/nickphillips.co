@@ -1,1 +1,0 @@
-default['apache']['config_name']       = 'nickphillips.co'

@@ -1,3 +1,6 @@
+vcpus     = "2"
+memory    = "1024"
+
 Vagrant.configure("2") do |config|
   config.vm.box = "opscode-ubuntu-14.04"
   config.vm.box_url = "https://vagrantcloud.com/chef/boxes/ubuntu-14.04/versions/1/providers/vmware_desktop.box"
@@ -17,6 +20,7 @@ Vagrant.configure("2") do |config|
   end
 
   config.omnibus.chef_version = :latest
+  config.berkshelf.berksfile_path = "Berksfile"
   config.berkshelf.enabled = true
 
   config.vm.define :web do |box|
@@ -36,8 +40,11 @@ Vagrant.configure("2") do |config|
     box.vm.synced_folder ".", "/vagrant", nfs: true
 
     box.vm.provision :chef_solo do |chef|
-      chef.custom_config_path = "./chef/vagrant.rb"
-      chef.synced_folder_type = "nfs"
+      chef.cookbooks_path       = "./chef/cookbooks/"
+      chef.data_bags_path       = "./chef/data_bags"
+      chef.custom_config_path   = "./chef/vagrant.rb"
+      chef.synced_folder_type   = "nfs"
+
       chef.add_recipe "ls-dev"
     end
   end

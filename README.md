@@ -4,8 +4,8 @@ Source for nickphillips.co blog and portfolio website.
 
 Includes full development VM environment provisioning with [Vagrant](https://www.vagrantup.com/) and 
 [Chef](https://www.getchef.com/). Tested with [Test Kitchen](https://github.com/test-kitchen/test-kitchen). 
-Server side application built in PHP using Symfony2 and Doctrine 2 using a mySQL database.
-Frontend built using AngularJS and Bootstrap (LESS).
+Server side application built in PHP using [Symfony2](http://symfony.com/) and [Doctrine 2](http://www.doctrine-project.org/) using a mySQL database.
+Frontend built using [AngularJS](https://angularjs.org/) and [Bootstrap](http://getbootstrap.com) (LESS).
 
 __STATUS:__ huge work in progress currently ;)
 
@@ -32,15 +32,22 @@ Breakdown of all the software and libraries used for this project.
   * [Test Kitchen](http://kitchen.ci/)
   * [Berkshelf](http://berkshelf.com/)
 * [Grunt](http://gruntjs.com/)
+  * [load-grunt-tasks](https://github.com/sindresorhus/load-grunt-tasks)
+  * [grunt-bump](https://github.com/vojtajina/grunt-bump)
+  * [grunt-update-json](https://github.com/AndreasPizsa/grunt-update-json)
+  * [grunt-contrib-watch](https://github.com/gruntjs/grunt-contrib-watch)
+  * [grunt-contrib-uglify](https://github.com/gruntjs/grunt-contrib-uglify)
   * [grunt-bower-task](https://github.com/yatskevich/grunt-bower-task)
   * [grunt-contrib-jshint](https://github.com/gruntjs/grunt-contrib-jshint)
-  * [grunt-lesslint](https://github.com/jgable/grunt-lesslint)
-  * [grunt-contrib-uglify](https://github.com/gruntjs/grunt-contrib-uglify)
+  * [grunt-contrib-cssmin](https://github.com/gruntjs/grunt-contrib-cssmin)
   * [grunt-contrib-less](https://github.com/gruntjs/grunt-contrib-less)
-  * [grunt-contrib-watch](https://github.com/gruntjs/grunt-contrib-watch)
+  * [grunt-lesslint](https://github.com/jgable/grunt-lesslint)
+  * [grunt-phpcs](https://github.com/SaschaGalley/grunt-phpcs)
+  * [grunt-phplint](https://github.com/jgable/grunt-phplint)
 * [MailCatcher](http://mailcatcher.me/)
 * [phpMyAdmin](http://www.phpmyadmin.net/home_page/index.php)
 * [Composer](https://getcomposer.org/)
+* [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer)
 * [Bower](http://bower.io/)
 
 
@@ -75,7 +82,7 @@ Unfortunately due to this it's unlikely that this package will work on Windows h
 
 * Your workstation is running OS X or *nix based operating system
 * You know how to use the command line
-* You have [VirtualBox](https://www.virtualbox.org/) or VMware [fusion](http://www.vmware.com/uk/products/fusion)/[workstation](http://www.vmware.com/uk/products/workstation) (recommended for performance) installed
+* You have [VirtualBox](https://www.virtualbox.org/) or VMware [Fusion](http://www.vmware.com/uk/products/fusion)/[Workstation](http://www.vmware.com/uk/products/workstation) (recommended for performance) installed
 * You have git installed
 * You have [Ruby installed](https://www.ruby-lang.org/en/installation/)
 
@@ -116,16 +123,6 @@ We require a few Vagrant plugins to get the VM provisioned.
 vagrant plugin install vagrant-omnibus vagrant-berkshelf
 ```
 
-__Optional Berkshelf modifications__
-
-When using the vagrant-berkshelf plugin, there is a known issue where the Berkshelf NFS share is unmounted after provisioning,
-this prevents you from running the `vagrant provision` command.
-
-A known work around is to simply reboot the machine and provision it after booting using `vagrant reload --provision`.
-
-If making alterations to the Chef cookbooks/recipes this becomes a little tedious, a possible hack can be found under
-[#41](https://github.com/phillipsnick/nickphillips.co/issues/41).
-
 
 #### Test Kitchen 
 
@@ -134,16 +131,10 @@ If you wish to run the provisioning test suite, Test Kitchen will need installin
 Install Test Kitchen and the vagrant driver
 
 ```bash
-gem install test-kitchen kitchen-vagrant
+bundle install
 ```
 
-Check the kitchen command is available.
-
-```bash
-kitchen version
-```
-
-Please see the [tests section](##Tests) below for running the test suite.
+Please see the [test-kitchen tests section](#### Test Kitchen) below for details on running the test suite.
 
 
 #### Starting the VM
@@ -161,32 +152,81 @@ vagrant up
 Now might be a good time to make a coffee or two ;)
 
 
-## Bookmarks
+## Development Workflow
 
-### The project
-
-(http://192.168.100.10)
-
-### MailCatcher
-
-(http://192.168.100.10:1080)
-
-### phpMyAdmin
-
-http://192.168.100.10:1090
-
-notes: add details?
-
-## Tests
-
-### PHPUnit
-
-Login to the Vagrant VM and navigate to the apps root folder.
+All commands below must be run from within the VM created with Vagrant. To login to the VM and navigate to the projects root:
 
 ```bash
 vagrant ssh
 cd /vagrant
 ```
+
+### Bookmarks
+
+__TODO:__ IP config? Host manager? More details?
+
+#### The project
+
+http://192.168.15.12
+
+
+#### MailCatcher
+
+http://192.168.100.10:1080
+
+
+#### phpMyAdmin
+
+http://192.168.100.10:1090
+
+
+### Keeping JSON files in sync
+
+In this repository we have three JSON files which contain some identical meta data fields.
+* `composer.json` - PHP package manager definitions
+* `package.json` - NodeJS/NPM package manager
+* `bower.json` - Front end package manager
+
+Each of these files contain one or more of the following fields which contain identical information:
+* `name` - Project name
+* `description` - Project description
+* `license` - License information
+* `version` - Current version
+* `homepage` - Homepage URL
+
+To make life a little easier updating this information, the above fields should only ever be edited in composer.json.
+
+Then the grunt task for syncing JSON files should be run:
+
+```bash
+grunt update_json
+```
+
+More details on this task can be found on the [grunt-update-json](https://github.com/AndreasPizsa/grunt-update-json) page
+and inside the gruntfile.js inside this repository.
+
+
+### Testing
+
+You can run all tests using Grunt, there is a command setup to run the following:
+* PHP_CodeSniffer
+* PHP Linting
+* JavaScript Linting
+* Less Linting
+
+__TODO:__ Still to integrate
+* PHPUnit
+* JavaScript Tests
+
+To run this command:
+
+```bash
+grunt test
+```
+
+It's also possible to run each command individually.
+
+#### PHPUnit
 
 Run PHPUnit's suite
 
@@ -194,13 +234,78 @@ Run PHPUnit's suite
 phpunit -c app/
 ```
 
+It's also possible to run tests on a single bundle.
 
-### Test Kitchen
+```bash
+phpunit -c app/ src/App/DefaultBundle
+```
 
-### JS?
+
+#### Test Kitchen
+
+__TODO:__ Test kitchen is broken!
+
+
+#### JavaScript
+
+__TODO:__ Add some tests when we start using JavaScript!
+
+
+### Releases
+
+In an attempt to streamline the whole release process I have chosen to implement [grunt-bump](https://github.com/vojtajina/grunt-bump)
+specifically for this.
+
+This automatically updates the version number inside composer.json and package.json, creates the git tag. But pushing to GitHub
+has been disabled and this must be done manually.
+
+More commands can be found within the repository [grunt-bump](https://github.com/vojtajina/grunt-bump). But the main ones
+have been listed below.
+
+
+#### Patch Release
+
+```bash
+grunt bump
+```
+
+Or
+
+```bash
+grunt bump:patch
+```
+
+
+#### Minor Release
+
+```bash
+grunt bump:minor
+```
+
+
+#### Major Release
+
+```bash
+grunt bump:major
+```
+
+
+#### Pushing Releases
+
+Either push all tags up
+
+```bash
+git push --tags
+```
+
+Or only push a specific tag
+
+```bash
+git push origin v0.0.1
+```
+
 
 ## Notes
-
 
 ### Virtual Machine Providers
 

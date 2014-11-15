@@ -29,7 +29,10 @@ module.exports = function(grunt) {
 
     less: {
       files: {
-        src: 'bower_components/bootstrap/less/bootstrap.less',
+        src: [
+          'bower_components/bootstrap/less/bootstrap.less',
+          'src/**/*.less'
+        ],
         dest: 'web/assets/css/style.css'
       }
     },
@@ -39,7 +42,8 @@ module.exports = function(grunt) {
         files: {
           'web/assets/js/main.js': [
             'bower_components/angular/angular.min.js',
-            'bower_components/angular-bootstrap/ui-bootstrap.min.js'
+            'bower_components/angular-bootstrap/ui-bootstrap.min.js',
+            'src/**/*.js'
           ]
         }
       }
@@ -68,28 +72,54 @@ module.exports = function(grunt) {
       ]
     },
 
+    update_json: {
+      options: {
+        src: 'composer.json',
+        indent: '  '
+      },
+      bower: {
+        dest: 'bower.json',
+        fields: {
+          'name':         null,
+          'description':  null,
+          'license':      null
+        }
+      },
+      package: {
+        dest: 'package.json',
+        fields: {
+          'name':         null,
+          'description':  null,
+          'license':      null,
+          'version':      null,
+          'homepage':     null
+        }
+      }
+    },
+
     watch: {
       scripts: {
-        files: [],
+        files: ['src/**/*.js'],
         tasks: ['uglify']
       },
       styles: {
-        files: ['**/*.less'],
+        files: ['src/**/*.less'],
         tasks: ['less']
+      }
+    },
+
+    bump: {
+      options: {
+        files: ['composer.json', 'package.json'],
+        commitFiles: ['composer.json', 'package.json'],
+        push: false
       }
     }
   });
 
-  grunt.loadNpmTasks('grunt-bower-task');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-lesslint');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-less');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-phpcs');
-  grunt.loadNpmTasks('grunt-phplint');
-  grunt.loadNpmTasks('grunt-symfony2');
+  require('load-grunt-tasks')(grunt);
 
+  grunt.registerTask('json', 'update_json');
   grunt.registerTask('default', ['bower', 'less', 'uglify']);
   grunt.registerTask('test', ['phpcs', 'phplint', 'jshint', 'lesslint', 'sf2-console']);
 };
