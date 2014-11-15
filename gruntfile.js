@@ -21,9 +21,22 @@ module.exports = function(grunt) {
       ]
     },
 
-    'sf2-console': {
-      'twig-lint': {
-        cmd: 'twig:lint src'
+    shell: {
+      twiglint: {
+        command: [
+          'app/console twig:lint app/Resources/views',
+          'app/console twig:lint src'
+        ].join('&&'),
+        options: {
+          callback: function (err, stdout, stderr, cb) {
+            if (stdout.indexOf('KO in') > -1) {
+              cb(new Error('Failure in twig lint'));
+              return;
+            }
+
+            cb();
+          }
+        }
       }
     },
 
@@ -121,5 +134,5 @@ module.exports = function(grunt) {
 
   grunt.registerTask('json', 'update_json');
   grunt.registerTask('default', ['bower', 'less', 'uglify']);
-  grunt.registerTask('test', ['phpcs', 'phplint', 'jshint', 'lesslint', 'sf2-console']);
+  grunt.registerTask('test', ['phpcs', 'phplint', 'jshint', 'lesslint', 'shell:twiglint']);
 };

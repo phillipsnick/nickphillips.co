@@ -36,6 +36,7 @@ Breakdown of all the software and libraries used for this project.
   * [grunt-bump](https://github.com/vojtajina/grunt-bump)
   * [grunt-update-json](https://github.com/AndreasPizsa/grunt-update-json)
   * [grunt-contrib-watch](https://github.com/gruntjs/grunt-contrib-watch)
+  * [grunt-shell](https://github.com/sindresorhus/grunt-shell)
   * [grunt-contrib-uglify](https://github.com/gruntjs/grunt-contrib-uglify)
   * [grunt-bower-task](https://github.com/yatskevich/grunt-bower-task)
   * [grunt-contrib-jshint](https://github.com/gruntjs/grunt-contrib-jshint)
