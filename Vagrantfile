@@ -2,8 +2,7 @@ vcpus     = "2"
 memory    = "1024"
 
 Vagrant.configure("2") do |config|
-  config.vm.box = "opscode-ubuntu-14.04"
-  config.vm.box_url = "https://vagrantcloud.com/chef/boxes/ubuntu-14.04/versions/1/providers/vmware_desktop.box"
+  config.vm.box = "chef/ubuntu-14.04"
 
   # See issue #34
   #if Vagrant.has_plugin?("vagrant-cachier")
