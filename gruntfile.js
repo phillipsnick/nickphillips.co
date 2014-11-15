@@ -29,7 +29,10 @@ module.exports = function(grunt) {
 
     less: {
       files: {
-        src: 'bower_components/bootstrap/less/bootstrap.less',
+        src: [
+          'bower_components/bootstrap/less/bootstrap.less',
+          'src/**/*.less'
+        ],
         dest: 'web/assets/css/style.css'
       }
     },
@@ -39,7 +42,8 @@ module.exports = function(grunt) {
         files: {
           'web/assets/js/main.js': [
             'bower_components/angular/angular.min.js',
-            'bower_components/angular-bootstrap/ui-bootstrap.min.js'
+            'bower_components/angular-bootstrap/ui-bootstrap.min.js',
+            'src/**/*.js'
           ]
         }
       }
@@ -95,11 +99,11 @@ module.exports = function(grunt) {
 
     watch: {
       scripts: {
-        files: [],
+        files: ['src/**/*.js'],
         tasks: ['uglify']
       },
       styles: {
-        files: ['**/*.less'],
+        files: ['src/**/*.less'],
         tasks: ['less']
       }
     }
