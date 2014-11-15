@@ -33,6 +33,7 @@ Breakdown of all the software and libraries used for this project.
   * [Berkshelf](http://berkshelf.com/)
 * [Grunt](http://gruntjs.com/)
   * [load-grunt-tasks](https://github.com/sindresorhus/load-grunt-tasks)
+  * [grunt-bump](https://github.com/vojtajina/grunt-bump)
   * [grunt-update-json](https://github.com/AndreasPizsa/grunt-update-json)
   * [grunt-contrib-watch](https://github.com/gruntjs/grunt-contrib-watch)
   * [grunt-contrib-uglify](https://github.com/gruntjs/grunt-contrib-uglify)
@@ -167,7 +168,33 @@ vagrant up
 Now might be a good time to make a coffee or two ;)
 
 
-## Development
+## Development Workflow
+
+All commands below must be run from within the VM created with Vagrant. To login to the VM and navigate to the projects root:
+
+```bash
+vagrant ssh
+cd /vagrant
+```
+
+### Bookmarks
+
+__TODO:__ IP config? Host manager? More details?
+
+#### The project
+
+http://192.168.15.12
+
+
+#### MailCatcher
+
+http://192.168.100.10:1080
+
+
+#### phpMyAdmin
+
+http://192.168.100.10:1090
+
 
 ### Keeping JSON files in sync
 
@@ -195,32 +222,27 @@ More details on this task can be found on the [grunt-update-json](https://github
 and inside the gruntfile.js inside this repository.
 
 
-## Bookmarks
+### Testing
 
-### The project
+You can run all tests using Grunt, there is a command setup to run the following:
+* PHP_CodeSniffer
+* PHP Linting
+* JavaScript Linting
+* Less Linting
 
-(http://192.168.100.10)
+__TODO:__ Still to integrate
+* PHPUnit
+* JavaScript Tests
 
-### MailCatcher
-
-(http://192.168.100.10:1080)
-
-### phpMyAdmin
-
-http://192.168.100.10:1090
-
-notes: add details?
-
-## Tests
-
-### PHPUnit
-
-Login to the Vagrant VM and navigate to the apps root folder.
+To run this command:
 
 ```bash
-vagrant ssh
-cd /vagrant
+grunt test
 ```
+
+It's also possible to run each command individually.
+
+#### PHPUnit
 
 Run PHPUnit's suite
 
@@ -228,13 +250,63 @@ Run PHPUnit's suite
 phpunit -c app/
 ```
 
+It's also possible to run tests on a single bundle.
 
-### Test Kitchen
+```bash
+phpunit -c app/ src/App/DefaultBundle
+```
 
-### JS?
+
+#### Test Kitchen
+
+__TODO:__ Test kitchen is broken!
+
+
+#### JavaScript
+
+__TODO:__ Add some tests when we start using JavaScript!
+
+
+### Releases
+
+In an attempt to streamline the whole release process I have chosen to implement [grunt-bump](https://github.com/vojtajina/grunt-bump)
+specifically for this.
+
+This automatically updates the version number inside composer.json and package.json, creates the git tag. But pushing to GitHub
+has been disabled and this must be done manually.
+
+More commands can be found within the repository [grunt-bump](https://github.com/vojtajina/grunt-bump). But the main ones
+have been listed below.
+
+
+#### Patch Release
+
+```bash
+grunt bump
+```
+
+Or
+
+```bash
+grunt bump:patch
+```
+
+
+#### Minor Release
+
+```bash
+grunt bump:minor
+```
+
+
+#### Major Release
+
+```bash
+grunt bump:major
+```
+
 
 ## Notes
-
 
 ### Virtual Machine Providers
 

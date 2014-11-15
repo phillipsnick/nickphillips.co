@@ -106,6 +106,13 @@ module.exports = function(grunt) {
         files: ['src/**/*.less'],
         tasks: ['less']
       }
+    },
+
+    bump: {
+      options: {
+        files: ['composer.json', 'package.json'],
+        push: false
+      }
     }
   });
 
