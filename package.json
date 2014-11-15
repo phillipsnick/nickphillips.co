@@ -1,6 +1,6 @@
 {
-  "name": "phillipsnick/nickphillips.co",
-  "version": "0.0.1",
+  "name": "nickphillips.co",
+  "version": "0.0.2",
   "description": "Source for nickphillips.co blog and portfolio website",
   "main": " ",
   "directories": {
@@ -22,6 +22,7 @@
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-bower-task": "^0.4.0",
+    "grunt-bump": "0.0.16",
     "grunt-contrib-cssmin": "^0.10.0",
     "grunt-contrib-jshint": "^0.10.0",
     "grunt-contrib-less": "^0.12.0",
