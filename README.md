@@ -306,6 +306,21 @@ grunt bump:major
 ```
 
 
+#### Pushing Releases
+
+Either push all tags up
+
+```bash
+git push --tags
+```
+
+Or only push a specific tag
+
+```bash
+git push origin v0.0.1
+```
+
+
 ## Notes
 
 ### Virtual Machine Providers
