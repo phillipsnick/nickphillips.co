@@ -15,6 +15,7 @@ Vagrant.configure("2") do |config|
   #end
 
   config.omnibus.chef_version = :latest
+  config.berkshelf.berksfile_path = "Berksfile"
   config.berkshelf.enabled = true
 
   #config.vm.hostname = "webapp-ubuntu-1404.vagrantup.com"
