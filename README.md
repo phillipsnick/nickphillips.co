@@ -118,9 +118,10 @@ We require a few Vagrant plugins to get the VM provisioned.
 
 * `vagrant-omnibus` - Ensure the required version of Chef is installed on the VM
 * `vagrant-berkshelf` - Chef cookbook management
+* `vagrant-hostmanager` - Updates /etc/hosts file automatically
 
 ```bash
-vagrant plugin install vagrant-omnibus vagrant-berkshelf
+vagrant plugin install vagrant-omnibus vagrant-berkshelf vagrant-hostmanager
 ```
 
 
@@ -163,21 +164,21 @@ cd /vagrant
 
 ### Bookmarks
 
-__TODO:__ IP config? Host manager? More details?
+__TODO:__ IP config? More details?
 
 #### The project
 
-http://192.168.15.12
+http://nickphillips.dev or http://192.168.15.10
 
 
 #### MailCatcher
 
-http://192.168.100.10:1080
+http://nickphillips.dev:1080 or http://192.168.15.10:1080
 
 
 #### phpMyAdmin
 
-http://192.168.100.10:1090
+http://nickphillips.dev:1090 or http://192.168.15.10:1090
 
 
 ### Keeping JSON files in sync
