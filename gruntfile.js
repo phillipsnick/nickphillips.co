@@ -111,6 +111,7 @@ module.exports = function(grunt) {
     bump: {
       options: {
         files: ['composer.json', 'package.json'],
+        commitFiles: ['composer.json', 'package.json'],
         push: false
       }
     }
