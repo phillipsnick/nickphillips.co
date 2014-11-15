@@ -14,11 +14,14 @@ Vagrant.configure("2") do |config|
   #  }
   #end
 
+  if Vagrant.has_plugin?("vagrant-hostmanager")
+    config.hostmanager.enabled = true
+    config.hostmanager.manage_host = true
+  end
+
   config.omnibus.chef_version = :latest
   config.berkshelf.berksfile_path = "Berksfile"
   config.berkshelf.enabled = true
-
-  #config.vm.hostname = "webapp-ubuntu-1404.vagrantup.com"
 
   config.vm.define :web do |box|
     box.vm.provider "virtualbox" do |v|
@@ -31,7 +34,8 @@ Vagrant.configure("2") do |config|
       v.vmx["memsize"]  = memory
     end
 
-    box.vm.network "private_network", ip: "192.168.15.12"
+    box.vm.hostname = "nickphillips.dev"
+    box.vm.network "private_network", ip: "192.168.15.10"
 
     box.vm.synced_folder ".", "/vagrant", nfs: true
 

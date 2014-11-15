@@ -118,20 +118,11 @@ We require a few Vagrant plugins to get the VM provisioned.
 
 * `vagrant-omnibus` - Ensure the required version of Chef is installed on the VM
 * `vagrant-berkshelf` - Chef cookbook management
+* `vagrant-hostmanager` - Updates /etc/hosts file automatically
 
 ```bash
-vagrant plugin install vagrant-omnibus vagrant-berkshelf
+vagrant plugin install vagrant-omnibus vagrant-berkshelf vagrant-hostmanager
 ```
-
-__Optional Berkshelf modifications__
-
-When using the vagrant-berkshelf plugin, there is a known issue where the Berkshelf NFS share is unmounted after provisioning,
-this prevents you from running the `vagrant provision` command.
-
-A known work around is to simply reboot the machine and provision it after booting using `vagrant reload --provision`.
-
-If making alterations to the Chef cookbooks/recipes this becomes a little tedious, a possible hack can be found under
-[#41](https://github.com/phillipsnick/nickphillips.co/issues/41).
 
 
 #### Test Kitchen 
@@ -141,16 +132,10 @@ If you wish to run the provisioning test suite, Test Kitchen will need installin
 Install Test Kitchen and the vagrant driver
 
 ```bash
-gem install test-kitchen kitchen-vagrant
+bundle install
 ```
 
-Check the kitchen command is available.
-
-```bash
-kitchen version
-```
-
-Please see the [tests section](##Tests) below for running the test suite.
+Please see the [test-kitchen tests section](#### Test Kitchen) below for details on running the test suite.
 
 
 #### Starting the VM
@@ -179,21 +164,21 @@ cd /vagrant
 
 ### Bookmarks
 
-__TODO:__ IP config? Host manager? More details?
+__TODO:__ IP config? More details?
 
 #### The project
 
-http://192.168.15.12
+http://nickphillips.dev or http://192.168.15.10
 
 
 #### MailCatcher
 
-http://192.168.100.10:1080
+http://nickphillips.dev:1080 or http://192.168.15.10:1080
 
 
 #### phpMyAdmin
 
-http://192.168.100.10:1090
+http://nickphillips.dev:1090 or http://192.168.15.10:1090
 
 
 ### Keeping JSON files in sync
