@@ -339,7 +339,7 @@ Possible types include:
 
 __Example__
 
-Displaying a success message from within a controller.
+Displaying a success message from within a controller action.
 
 ```php
 $this->get('session')->getFlashBag()->add(
