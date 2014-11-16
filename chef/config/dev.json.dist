@@ -1,0 +1,12 @@
+{
+  "vm": {
+    "vcpus": "2",
+    "memory": "1024",
+    "ip": "192.168.15.10",
+    "hostname": "nickphillips.dev"
+  },
+  "git": {
+    "name": "Nick Phillips",
+    "email": "nick@linkstudios.co.uk"
+  }
+}

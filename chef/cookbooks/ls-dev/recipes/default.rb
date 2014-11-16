@@ -1,6 +1,6 @@
 include_recipe 'ls-dev::apt'
 include_recipe 'curl'
-include_recipe 'git'
+include_recipe 'ls-dev::git'
 include_recipe 'ls-dev::php'
 include_recipe 'ls-dev::apache2'
 include_recipe 'ls-dev::mysql'

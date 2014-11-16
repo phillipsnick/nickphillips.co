@@ -139,6 +139,23 @@ bundle install
 Please see the [test-kitchen tests section](#### Test Kitchen) below for details on running the test suite.
 
 
+#### Custom Settings
+
+If you need to customise any of the settings such as:
+* VM CPUs
+* VM Memory
+* VM IP address
+* VM Hostname
+
+Or if you would like to make use of git from within the VM, it's possible to define the name and email used by git.
+
+To make any of these changes simply copy the dist file from `chef/config/` and alter the parameters accordingly.
+
+```bash
+cp chef/config/dev.json.dist chef/config/dev.json
+```
+
+
 #### Starting the VM
 
 __TODO:__ do  we need `berks install` ??

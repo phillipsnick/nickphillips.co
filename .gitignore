@@ -25,6 +25,7 @@ bin/*
 # Chef
 .kitchen/
 .kitchen.local.yml
+chef/config/dev.json
 
 # Symfony2
 /web/bundles/
