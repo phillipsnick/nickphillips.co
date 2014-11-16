@@ -1,0 +1,18 @@
+<div id="flashbag-container">
+    {% for type, messages in app.session.flashbag.all %}
+        {% if type == 'error' %}
+            {% set type = 'danger' %}
+        {% endif %}
+
+        {% for message in messages %}
+            <div class="container">
+                <div class="row">
+                    <div class="alert alert-{{ type }}">
+                        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        {{ message }}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% endfor %}
+</div>

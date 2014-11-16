@@ -324,6 +324,30 @@ git push origin v0.0.1
 ```
 
 
+## Application
+
+### Flash Messages
+
+In order to tie the [flash messages](http://symfony.com/doc/current/book/controller.html#flash-messages) provided by Symfony
+in with the Bootstrap styling, it's possible to quickly and easily use the 4 default styles included with Bootstrap.
+
+Possible types include:
+* `success`
+* `info`
+* `warning`
+* `error` - This is converted into `danger` within the view
+
+__Example__
+
+Displaying a success message from within a controller.
+
+```php
+$this->get('session')->getFlashBag()->add(
+    'success',
+    'This is a success message!'
+);
+```
+
 ## Notes
 
 ### Virtual Machine Providers
