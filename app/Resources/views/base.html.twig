@@ -10,6 +10,27 @@
         {% block head %}{% endblock %}
     </head>
     <body>
+        <noscript>
+            {% if app.session.get('noscript') != true %}
+                <div class="jumbotron-alert alert-warning">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-10">
+                                <p><strong>JavaScript is required for this website to function to it's full potential.</strong></p>
+                                <p>You will be able to browse the site with limited functionality.</p>
+                            </div>
+
+                            <div class="col-md-2">
+                                <div class="pull-right">
+                                    <a href="/noscript/hide" class="btn btn-warning">Dismiss Warning</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </noscript>
+
         {% block body %}{% endblock %}
         {% block javascripts %}{%  endblock %}
         <script type="text/javascript" src="{{ asset('assets/js/main.js') }}"></script>

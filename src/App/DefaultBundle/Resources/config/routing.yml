@@ -1,3 +1,7 @@
 default_homepage:
     path:     /
     defaults: { _controller: AppDefaultBundle:Default:index }
+
+noscript:
+    path:     /noscript/hide
+    defaults: { _controller: AppDefaultBundle:Default:noscript }
