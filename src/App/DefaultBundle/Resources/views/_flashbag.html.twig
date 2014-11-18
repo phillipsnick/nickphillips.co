@@ -1,4 +1,4 @@
-<div id="flashbag-container">
+<div id="flash-messenger-container">
     {% for type, messages in app.session.flashbag.all %}
         {% if type == 'error' %}
             {% set type = 'danger' %}
@@ -16,4 +16,5 @@
         {% endfor %}
     {% endfor %}
 </div>
+
 <div ng-include src="'test.html'"></div>

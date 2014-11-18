@@ -1,6 +1,6 @@
-Hello this is my text file
-
-        <div ng-controller="AppFlashbagCtrl">
-<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
-<button class='btn btn-default' ng-click="addAlert()">Add Alert</button>
-        </div>
+<div ng-controller="AppFlashMessengerCtrl">
+    <div ng-repeat="alert in alerts" class="alert alert-{{alert.type}}" close="closeAlert($index)">
+        <button type="button" class="close" ng-click="closeAlert($index)"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        {{alert.msg}}
+    </div>
+</div>
