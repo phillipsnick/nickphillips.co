@@ -264,6 +264,8 @@ It's also possible to run tests on a single bundle.
 phpunit -c app/ src/App/DefaultBundle
 ```
 
+__TODO:__ Grunt phpunit?
+
 
 #### Test Kitchen
 
@@ -272,8 +274,20 @@ __TODO:__ Test kitchen is broken!
 
 #### JavaScript
 
-All tests are written to be run with [Jasmine](http://jasmine.github.io/), run using [Karma](karma-runner.github.io)
-and [PhantomJS](http://phantomjs.org/)
+All tests are written to be run with [Jasmine](http://jasmine.github.io/), using [Karma](karma-runner.github.io)
+and [PhantomJS](http://phantomjs.org/).
+
+To run the tests either run karam via Grunt (recommended)
+
+```bash
+grunt karma
+```
+
+Or use karma directly.
+
+```bash
+karma start tests/js/karma.config.js
+```
 
 
 ### Releases
