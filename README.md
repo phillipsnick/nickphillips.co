@@ -368,6 +368,22 @@ $this->get('session')->getFlashBag()->add(
 );
 ```
 
+
+#### AngularJS Flash Messages
+
+It's possibly to easily add flash messages to other controllers and services using the `AppAlertService`.
+
+The below example shows how to inject into a controller.
+
+```js
+app.controller('ControllerNameCtrl', ['$scope', 'AppAlertService', function($scope, AppAlertService) {
+  $scope.testButton = function() {
+    AppAlertService.add('success', 'Woo we created a success message');
+  }
+}]);
+```
+
+
 ## Notes
 
 ### Virtual Machine Providers
