@@ -62,6 +62,13 @@ module.exports = function(grunt) {
       }
     },
 
+    karma: {
+      unit: {
+        configFile: 'tests/js/karma.config.js',
+        singleRun: true
+      }
+    },
+
     phpcs: {
       application: {
         dir: [

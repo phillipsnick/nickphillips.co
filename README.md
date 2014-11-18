@@ -45,11 +45,16 @@ Breakdown of all the software and libraries used for this project.
   * [grunt-lesslint](https://github.com/jgable/grunt-lesslint)
   * [grunt-phpcs](https://github.com/SaschaGalley/grunt-phpcs)
   * [grunt-phplint](https://github.com/jgable/grunt-phplint)
+  * [grunt-karma](https://github.com/karma-runner/grunt-karma)
 * [MailCatcher](http://mailcatcher.me/)
 * [phpMyAdmin](http://www.phpmyadmin.net/home_page/index.php)
 * [Composer](https://getcomposer.org/)
 * [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer)
+* [PHPUnit](https://phpunit.de/)
 * [Bower](http://bower.io/)
+* [Jasmine](http://jasmine.github.io/)
+* [Karma](karma-runner.github.io)
+* [PhantomJS](http://phantomjs.org/)
 
 
 ### Application
@@ -267,7 +272,8 @@ __TODO:__ Test kitchen is broken!
 
 #### JavaScript
 
-__TODO:__ Add some tests when we start using JavaScript!
+All tests are written to be run with [Jasmine](http://jasmine.github.io/), run using [Karma](karma-runner.github.io)
+and [PhantomJS](http://phantomjs.org/)
 
 
 ### Releases
