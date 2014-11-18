@@ -62,6 +62,13 @@ module.exports = function(grunt) {
       }
     },
 
+    karma: {
+      unit: {
+        configFile: 'test/js/karma.config.js',
+        singleRun: true
+      }
+    },
+
     phpcs: {
       application: {
         dir: [
@@ -134,5 +141,5 @@ module.exports = function(grunt) {
 
   grunt.registerTask('json', 'update_json');
   grunt.registerTask('default', ['bower', 'less', 'uglify']);
-  grunt.registerTask('test', ['phpcs', 'phplint', 'jshint', 'lesslint', 'shell:twiglint']);
+  grunt.registerTask('test', ['phpcs', 'phplint', 'jshint', 'karma:unit', 'lesslint', 'shell:twiglint']);
 };
