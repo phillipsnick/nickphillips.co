@@ -1,7 +1,5 @@
 'use strict';
 
-//angular.module('app', []);
-
 describe('AppAlertService Test', function() {
   var AppAlertService;
   var $rootScope;
@@ -15,10 +13,10 @@ describe('AppAlertService Test', function() {
 
   describe('add an alert', function() {
     it('should should be in the rootScope', function() {
-      expect(AppAlertService.add('error', 'This should be an error')).toBe(1);
-      expect($rootScope.alerts.length).toBe(1);
+      var alert = AppAlertService.add('error', 'This should be an error');
 
-      var alert = $rootScope.alerts[0];
+      expect(typeof alert).toBe('object');
+      expect($rootScope.alerts.length).toBe(1);
 
       expect(alert.type).toBe('error');
       expect(alert.msg).toBe('This should be an error');
@@ -27,23 +25,18 @@ describe('AppAlertService Test', function() {
 
   describe('closing an alert', function() {
     it('should have a close function', function() {
-      AppAlertService.add('error', 'This should be an error');
-      var alert = $rootScope.alerts[0];
-
+      var alert = AppAlertService.add('error', 'This should be an error');
       expect(typeof alert.close).toBe('function');
 
-      spyOn(alert, 'close');
       alert.close();
-      console.log($rootScope.alerts);
-      expect(alert.close).toHaveBeenCalled();
-      expect($rootScope.alerts.length).toBe(0);
+      expect(AppAlertService.getAlerts().length).toBe(0);
     });
 
     it('should be closable by index', function() {
       AppAlertService.add('error', 'This should be an error');
       expect($rootScope.alerts.length).toBe(1);
 
-      AppAlertService.closeAlertIdx(1);
+      AppAlertService.closeAlertIdx(0);
       expect($rootScope.alerts.length).toBe(0);
     });
   });
@@ -60,5 +53,17 @@ describe('AppAlertService Test', function() {
       AppAlertService.clear();
       expect($rootScope.alerts.length).toBe(0);
     });
+  });
+
+  describe('geeting all alerts', function() {
+    beforeEach(function() {
+      AppAlertService.add('error', 'This should be an error');
+      AppAlertService.add('success', 'This should be an success');
+    });
+
+    it('should contain 2 alerts', function() {
+      expect($rootScope.alerts.length).toBe(2);
+      expect(AppAlertService.getAlerts().length).toBe(2);
+    })
   });
 });

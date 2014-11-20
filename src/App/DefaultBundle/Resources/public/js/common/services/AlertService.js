@@ -3,18 +3,25 @@ app.factory('AppAlertService', ['$rootScope', function($rootScope) {
   $rootScope.alerts = [];
 
   return alertService = {
+    getAlerts: function() {
+      return $rootScope.alerts;
+    },
+
     add: function(type, msg) {
-      return $rootScope.alerts.push({
+      var alert = {
         type: type,
         msg: msg,
         close: function() {
           return alertService.closeAlert(this);
         }
-      });
+      };
+
+      $rootScope.alerts.push(alert);
+
+      return alert;
     },
 
     closeAlert: function(alert) {
-      console.log($rootScope.alerts.indexOf(alert));
       return this.closeAlertIdx($rootScope.alerts.indexOf(alert));
     },
 
