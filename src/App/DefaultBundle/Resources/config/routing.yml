@@ -5,3 +5,7 @@ default_homepage:
 noscript:
     path:     /noscript/hide
     defaults: { _controller: AppDefaultBundle:Default:noscript }
+
+tweets:
+    path:     /tweets
+    defaults: { _controller: AppDefaultBundle:Twitter:tweets }
