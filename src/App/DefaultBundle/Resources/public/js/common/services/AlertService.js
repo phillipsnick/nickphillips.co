@@ -1,4 +1,4 @@
-app.factory('AppAlertService', ['$rootScope', function($rootScope) {
+app.factory('AppAlertService', ['$rootScope', '$timeout', function($rootScope, $timeout) {
   var alertService;
   $rootScope.alerts = [];
 
@@ -7,7 +7,7 @@ app.factory('AppAlertService', ['$rootScope', function($rootScope) {
       return $rootScope.alerts;
     },
 
-    add: function(type, msg) {
+    add: function(type, msg, timeout) {
       var alert = {
         type: type,
         msg: msg,
@@ -15,6 +15,12 @@ app.factory('AppAlertService', ['$rootScope', function($rootScope) {
           return alertService.closeAlert(this);
         }
       };
+
+      if (timeout) {
+        $timeout(function(){
+          alertService.closeAlert(alert);
+        }, timeout);
+      }
 
       $rootScope.alerts.push(alert);
 
