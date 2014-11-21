@@ -51,14 +51,25 @@ module.exports = function(grunt) {
     },
 
     uglify: {
+      options: {
+        beautify: true,
+        mangle: false
+      },
       scripts: {
         files: {
           'web/assets/js/main.js': [
             'bower_components/angular/angular.min.js',
             'bower_components/angular-bootstrap/ui-bootstrap.min.js',
-            'src/**/*.js'
+            'src/**/Resources/public/js/**/*.js'
           ]
         }
+      }
+    },
+
+    karma: {
+      unit: {
+        configFile: 'test/js/karma.config.js',
+        singleRun: true
       }
     },
 
@@ -134,5 +145,5 @@ module.exports = function(grunt) {
 
   grunt.registerTask('json', 'update_json');
   grunt.registerTask('default', ['bower', 'less', 'uglify']);
-  grunt.registerTask('test', ['phpcs', 'phplint', 'jshint', 'lesslint', 'shell:twiglint']);
+  grunt.registerTask('test', ['phpcs', 'phplint', 'jshint', 'karma:unit', 'lesslint', 'shell:twiglint']);
 };
