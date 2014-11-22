@@ -3,12 +3,14 @@
 describe('AppAlertService Test', function() {
   var AppAlertService;
   var $rootScope;
+  var $timeout;
 
   beforeEach(module('app'));
 
-  beforeEach(inject(function(_AppAlertService_, _$rootScope_) {
+  beforeEach(inject(function(_AppAlertService_, _$rootScope_, _$timeout_) {
     AppAlertService = _AppAlertService_;
     $rootScope = _$rootScope_;
+    $timeout = _$timeout_;
   }));
 
   describe('add an alert', function() {
@@ -64,6 +66,19 @@ describe('AppAlertService Test', function() {
     it('should contain 2 alerts', function() {
       expect($rootScope.alerts.length).toBe(2);
       expect(AppAlertService.getAlerts().length).toBe(2);
-    })
+    });
+  });
+
+  describe('timeout should close an alert', function() {
+    beforeEach(function() {
+      AppAlertService.add('success', 'This should be an success', 1000);
+    });
+
+    it('should automatically close an alert', function() {
+      expect(AppAlertService.getAlerts().length).toBe(1);
+
+      $timeout.flush();
+      expect(AppAlertService.getAlerts().length).toBe(0);
+    });
   });
 });
