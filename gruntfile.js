@@ -40,6 +40,22 @@ module.exports = function(grunt) {
       }
     },
 
+    ngtemplates: {
+      app: {
+        src: 'src/**/Resources/public/partials/**/*.html',
+        dest: 'app/tmp/ngtemplates.js',
+        options: {
+          url: function(url) {
+            var url = url.substring(4);
+            var parts = url.split('/Resources/public/partials/');
+            var bundleName = (parts[0].split('/')).join('');
+
+            return 'assets/partials/' + bundleName + '/' + parts[1];
+          }
+        }
+      }
+    },
+
     less: {
       files: {
         src: [
@@ -60,7 +76,8 @@ module.exports = function(grunt) {
           'web/assets/js/main.js': [
             'bower_components/angular/angular.min.js',
             'bower_components/angular-bootstrap/ui-bootstrap.min.js',
-            'src/**/Resources/public/js/**/*.js'
+            'src/**/Resources/public/js/**/*.js',
+            '<%= ngtemplates.app.dest %>'
           ]
         }
       }
@@ -129,6 +146,10 @@ module.exports = function(grunt) {
       styles: {
         files: ['src/**/*.less'],
         tasks: ['less']
+      },
+      partials: {
+        files: ['src/**/Resources/public/partials/**/*.html'],
+        tasks: ['js']
       }
     },
 
@@ -144,6 +165,7 @@ module.exports = function(grunt) {
   require('load-grunt-tasks')(grunt);
 
   grunt.registerTask('json', 'update_json');
-  grunt.registerTask('default', ['bower', 'less', 'uglify']);
+  grunt.registerTask('default', ['bower', 'less', 'ngtemplates', 'uglify']);
+  grunt.registerTask('js', ['ngtemplates', 'uglify']);
   grunt.registerTask('test', ['phpcs', 'phplint', 'jshint', 'karma:unit', 'lesslint', 'shell:twiglint']);
 };

@@ -46,6 +46,7 @@ Breakdown of all the software and libraries used for this project.
   * [grunt-phpcs](https://github.com/SaschaGalley/grunt-phpcs)
   * [grunt-phplint](https://github.com/jgable/grunt-phplint)
   * [grunt-karma](https://github.com/karma-runner/grunt-karma)
+  * [grunt-angular-templates](https://github.com/ericclemmons/grunt-angular-templates)
 * [MailCatcher](http://mailcatcher.me/)
 * [phpMyAdmin](http://www.phpmyadmin.net/home_page/index.php)
 * [Composer](https://getcomposer.org/)
@@ -381,6 +382,24 @@ app.controller('ControllerNameCtrl', ['$scope', 'AppAlertService', function($sco
     AppAlertService.add('success', 'Woo we created a success message');
   }
 }]);
+```
+
+
+#### AngularJS Partials
+
+To help reduce the number of AJAX requests for fetching partials they are all preloaded into the main JavaScript file
+and setup into AngularJS' `$templateCache`. The Grunt file has been setup to pick up all partials within the public
+directory within a bundle, for example:
+
+```
+src/App/DefaultBundle/Resources/public/partials/my-example-partial.html
+```
+
+Grunt watch has been setup to watch for changes to partials and automatically regenerate the cache, but if you wish to
+run this manually, use the command below to generate the cache and update all the JavaScript files.
+
+```bash
+grunt js
 ```
 
 

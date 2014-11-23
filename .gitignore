@@ -33,8 +33,10 @@ chef/config/dev.json
 /app/cache/*
 /app/config/parameters.yml
 /app/logs/*
+/app/tmp/*
 !app/cache/.gitkeep
 !app/logs/.gitkeep
+!app/tmp/.gitkeep
 /build/
 /vendor/
 /bin/
