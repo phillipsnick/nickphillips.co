@@ -21,6 +21,7 @@
   "homepage": "http://nickphillips.co",
   "devDependencies": {
     "grunt": "^0.4.5",
+    "grunt-angular-templates": "^0.5.7",
     "grunt-bower-task": "^0.4.0",
     "grunt-bump": "0.0.16",
     "grunt-contrib-cssmin": "^0.10.0",
