@@ -291,6 +291,29 @@ karma start tests/js/karma.config.js
 ```
 
 
+### Features
+
+#### Feature Branch
+
+1. Create a feature branch `git checkout -b featureX`
+2. Commit the changes `git commit -am 'Some amazing changes'`
+3. Push the branch `git push origin featureX`
+
+
+#### Merging
+
+As I'm not the biggest fan of the whole GitHub pull request workflow I tend to just merge branches in locally and push up.
+By doing this it gives greater control over bumping versions and releasing correctly.
+
+Typical workflow:
+
+1. Merge branch `git merge featureX --no-ff`
+2. Bump the version accordingly as mentioned below
+3. Push the changes up `git push origin master`
+4. Delete the branch locally `git branch -d featureX`
+5. Delete the branch from GitHub `git push origin :featureX`
+
+
 ### Releases
 
 In an attempt to streamline the whole release process I have chosen to implement [grunt-bump](https://github.com/vojtajina/grunt-bump)
