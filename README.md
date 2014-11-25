@@ -265,7 +265,11 @@ It's also possible to run tests on a single bundle.
 phpunit -c app/ src/App/DefaultBundle
 ```
 
-__TODO:__ Grunt phpunit?
+Alternatively run all tests using Grunt.
+
+```bash
+grunt phpunit
+```
 
 
 #### Test Kitchen
