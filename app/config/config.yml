@@ -59,3 +59,5 @@ fos_user:
 
     service:
         user_manager: sonata.user.orm.user_manager
+
+# Twitter
