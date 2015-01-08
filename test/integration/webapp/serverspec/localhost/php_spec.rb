@@ -25,6 +25,7 @@ describe 'php' do
     its(:stdout) { should match /Xdebug/ }
     its(:stdout) { should match /mcrypt/ }
     its(:stdout) { should match /imagick/ }
+    its(:stdout) { should match /curl/ }
   end
 
   describe file('/etc/php5/fpm/pool.d/www.conf') do
