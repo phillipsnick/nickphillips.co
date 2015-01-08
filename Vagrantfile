@@ -48,7 +48,7 @@ Vagrant.configure("2") do |config|
     end
 
     box.vm.hostname = conf['vm']['hostname']
-    box.vm.network "private_network", ip: conf['vm']['ipa']
+    box.vm.network "private_network", ip: conf['vm']['ip']
     box.vm.synced_folder ".", "/vagrant", nfs: true
 
     box.vm.provision :chef_solo do |chef|
