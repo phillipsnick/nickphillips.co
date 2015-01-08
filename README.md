@@ -4,7 +4,7 @@ Source for nickphillips.co blog and portfolio website.
 
 Includes full development VM environment provisioning with [Vagrant](https://www.vagrantup.com/) and 
 [Chef](https://www.getchef.com/). Tested with [Test Kitchen](https://github.com/test-kitchen/test-kitchen). 
-Server side application built in PHP using [Symfony2](http://symfony.com/) and [Doctrine 2](http://www.doctrine-project.org/) using a mySQL database.
+Server side application built in PHP using [Symfony2](http://symfony.com/) and [Doctrine 2](http://www.doctrine-project.org/).
 Frontend built using [AngularJS](https://angularjs.org/) and [Bootstrap](http://getbootstrap.com) (LESS).
 
 __STATUS:__ huge work in progress currently ;)
@@ -18,7 +18,7 @@ Breakdown of all the software and libraries used for this project.
 
 * [Ubuntu 14.04 x64](http://www.ubuntu.com/server)
 * [Apache 2.4](http://httpd.apache.org/)
-* [mySQL 5.5](http://www.mysql.com/products/community/)
+* [PostgreSQL 9.4](http://www.postgresql.org/)
 * [PHP 5.6](http://php.net/) / [PHP-FPM](http://php-fpm.org/)
 * [Memcached](http://memcached.org/)
 * [NodeJS](http://nodejs.org/)
@@ -48,7 +48,6 @@ Breakdown of all the software and libraries used for this project.
   * [grunt-karma](https://github.com/karma-runner/grunt-karma)
   * [grunt-angular-templates](https://github.com/ericclemmons/grunt-angular-templates)
 * [MailCatcher](http://mailcatcher.me/)
-* [phpMyAdmin](http://www.phpmyadmin.net/home_page/index.php)
 * [Composer](https://getcomposer.org/)
 * [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer)
 * [PHPUnit](https://phpunit.de/)
@@ -200,9 +199,13 @@ http://nickphillips.dev or http://192.168.15.10
 http://nickphillips.dev:1080 or http://192.168.15.10:1080
 
 
-#### phpMyAdmin
+#### PostgreSQL
 
-http://nickphillips.dev:1090 or http://192.168.15.10:1090
+To access PostgreSQL I use the inbuilt database tool within my IDE (Intellij 14). To do so I use the following settings
+
+|Host|Port|Database|Username|Password
+|---|---|---|---|---|
+|nickhpillips.dev|5432|app|app|app|
 
 
 ### Keeping JSON files in sync
