@@ -6,7 +6,7 @@ php_fpm_pool "www" do
   php_options 'php_value[date.timezone]' => 'Europe/London'
 end
 
-package "php5-mysql"
+package "php5-pgsql"
 package "php5-mcrypt"
 package "php5-memcached"
 package "php5-xdebug"
